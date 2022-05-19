@@ -14,14 +14,14 @@ extension Berries {
         
         enum CodingKeys: String, CodingKey {
             case id, name, berries
-            case contest_type = "contest_type"
+            case contestType = "contest_type"
             case names
         }
         
         public let id: Int
         public let name: String
         public let berries: [Map]
-        public let contest_type: NamedAPIResource
+        public let contestType: NamedAPIResource?
         public let names: [Name]
     }
 }
