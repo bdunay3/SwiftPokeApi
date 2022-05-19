@@ -32,6 +32,7 @@ api.getPage(of: .pokemon, from: 0, limit: 2)
     .collect()
     .map { Set<String>($0) }
     .flatMap(\.publisher)
+    .receive(on: DispatchQueue.main)
     .sink {
         print("Request Completed with status: \($0)")
     } receiveValue: {
