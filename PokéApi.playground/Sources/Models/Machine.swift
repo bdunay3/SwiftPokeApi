@@ -3,10 +3,6 @@ import Foundation
 public struct Machine: ApiGetable {
     public static let resource: PokeApiResourceType = PokeApi.Resource.machine
     
-    public static var decoder: JSONDecoder = {
-        JSONDecoder()
-    }()
-    
     enum CodingKeys: String, CodingKey {
         case id, item, move
         case versionGroup = "version_group"

@@ -1,10 +1,6 @@
 import Foundation
 
 public struct Pokemon: ApiGetable {
-    public static var decoder: JSONDecoder = {
-       JSONDecoder()
-    }()
-    
     public static let resource: PokeApiResourceType = PokeApi.Resource.pokemon
     
     public struct Ability: Decodable {

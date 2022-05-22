@@ -3,9 +3,6 @@ import Foundation
 extension Games {
     public struct Pokedexes: ApiGetable {
         public static var resource: PokeApiResourceType = PokeApi.Resource.Games.pokedexes
-        public static var decoder: JSONDecoder = {
-            JSONDecoder()
-        }()
         
         public struct PokemonEntry: Decodable {
             enum CodingKeys: String, CodingKey {

@@ -3,10 +3,6 @@ import Foundation
 public struct Moves: ApiGetable {
     public static let resource: PokeApiResourceType = PokeApi.Resource.Moves.moves
     
-    public static var decoder: JSONDecoder = {
-        JSONDecoder()
-    }()
-    
     public struct ComboSets: Decodable {
         public let normal: ComboDetail
         public let `super`: ComboDetail

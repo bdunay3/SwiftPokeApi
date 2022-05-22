@@ -3,10 +3,6 @@ import Foundation
 public struct Genders: ApiGetable {
     public static let resource: PokeApiResourceType = PokeApi.Resource.Pokemon.gender
     
-    public static var decoder: JSONDecoder = {
-        JSONDecoder()
-    }()
-    
     public struct SpeciesGender: Decodable {
         enum CodingKeys: String, CodingKey {
             case rate

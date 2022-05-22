@@ -3,10 +3,6 @@ import Foundation
 public struct GrowthRates: ApiGetable {
     public static var resource: PokeApiResourceType = PokeApi.Resource.Pokemon.growthRate
     
-    public static var decoder: JSONDecoder = {
-        JSONDecoder()
-    }()
-    
     public struct ExperienceLevel: Decodable {
         public let level: Int
         public let experience: Int

@@ -2,9 +2,6 @@ import Foundation
 
 public struct Stat: ApiGetable {
     public static var resource: PokeApiResourceType = PokeApi.Resource.Pokemon.stats
-    public static var decoder: JSONDecoder = {
-        JSONDecoder()
-    }()
     
     public struct MoveStatAffect: Decodable {
         public let change: Int

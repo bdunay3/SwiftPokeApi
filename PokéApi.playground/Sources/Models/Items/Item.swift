@@ -4,10 +4,6 @@ extension Items {
     public struct Item: ApiGetable {
         public static var resource: PokeApiResourceType = PokeApi.Resource.Items.item
         
-        public static var decoder: JSONDecoder = {
-            JSONDecoder()
-        }()
-        
         public struct ItemSprites: Decodable {
             public let `default`: String
         }

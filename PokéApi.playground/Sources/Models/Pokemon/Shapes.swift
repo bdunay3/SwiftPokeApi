@@ -2,9 +2,6 @@ import Foundation
 
 public struct Shapes: ApiGetable {
     public static var resource: PokeApiResourceType = PokeApi.Resource.Pokemon.shape
-    public static var decoder: JSONDecoder = {
-        JSONDecoder()
-    }()
     
     public struct AwesomeName: Decodable {
         enum CodingKeys: String, CodingKey {

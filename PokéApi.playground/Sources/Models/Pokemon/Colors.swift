@@ -2,9 +2,6 @@ import Foundation
 
 public struct Colors: ApiGetable {
     public static var resource: PokeApiResourceType = PokeApi.Resource.Pokemon.colors
-    public static var decoder: JSONDecoder = {
-        JSONDecoder()
-    }()
     
     enum CodingKeys: String, CodingKey {
         case id, name, names

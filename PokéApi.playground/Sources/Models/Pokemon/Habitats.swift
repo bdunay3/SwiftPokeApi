@@ -2,9 +2,6 @@ import Foundation
 
 public struct Habitats: ApiGetable {
     public static var resource: PokeApiResourceType = PokeApi.Resource.Pokemon.habitats
-    public static var decoder: JSONDecoder = {
-        JSONDecoder()
-    }()
     
     enum CodingKeys: String, CodingKey {
         case id, name, names

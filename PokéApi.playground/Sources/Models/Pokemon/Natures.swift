@@ -2,9 +2,6 @@ import Foundation
 
 public struct Natures: ApiGetable {
     public static var resource: PokeApiResourceType = PokeApi.Resource.Pokemon.nature
-    public static var decoder: JSONDecoder = {
-        JSONDecoder()
-    }()
     
     public struct StatChange: Decodable {
         enum CodingKeys: String, CodingKey {

@@ -4,10 +4,6 @@ import Foundation
 public struct Ability: ApiGetable {
     public static var resource: PokeApiResourceType = PokeApi.Resource.Pokemon.abilities
     
-    public static var decoder: JSONDecoder = {
-        JSONDecoder()
-    }()
-    
     public struct EffectChange: Decodable {
         public let effectEntries: [Effect]
         public let versionGroup: NamedAPIResource

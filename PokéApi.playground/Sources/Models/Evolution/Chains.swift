@@ -4,10 +4,6 @@ public enum Evolution {
     public struct Chains: ApiGetable {
         public static let resource: PokeApiResourceType = PokeApi.Resource.Evolution.chains
         
-        public static var decoder: JSONDecoder = {
-            JSONDecoder()
-        }()
-        
         public struct Link: Decodable {
             enum CodingKeys: String, CodingKey {
                 case isBaby = "is_baby"

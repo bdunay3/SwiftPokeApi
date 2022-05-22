@@ -8,7 +8,7 @@ import Foundation
 var cancellables = [AnyCancellable]()
 let api = PokeApi()
 
-api.get(Locations.self, byId: 1)
+api.get(Pokemon.self, byId: 1)
     .sink {
         print("Request Completed with status: \($0)")
     } receiveValue: {

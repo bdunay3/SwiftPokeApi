@@ -4,10 +4,6 @@ extension Locations {
     public struct Regions: ApiGetable {
         public static let resource: PokeApiResourceType = PokeApi.Resource.Locations.region
         
-        public static var decoder: JSONDecoder = {
-            JSONDecoder()
-        }()
-        
         enum CodingKeys: String, CodingKey {
             case id, locations, name, names
             case mainGeneration = "main_generation"

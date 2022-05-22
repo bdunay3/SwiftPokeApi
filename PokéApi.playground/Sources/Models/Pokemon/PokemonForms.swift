@@ -3,10 +3,6 @@ import Foundation
 public struct Forms: ApiGetable {
     public static var resource: PokeApiResourceType = PokeApi.Resource.Pokemon.forms
     
-    public static var decoder: JSONDecoder = {
-        JSONDecoder()
-    }()
-    
     public struct Sprites: Decodable {
         enum CodingKeys: String, CodingKey {
             case frontDefault = "front_default"

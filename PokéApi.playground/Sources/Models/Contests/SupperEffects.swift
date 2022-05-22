@@ -4,10 +4,6 @@ extension Contests {
     public struct SuperEffects: ApiGetable {
         public static let resource: PokeApiResourceType = PokeApi.Resource.Contests.superEffects
         
-        public static var decoder: JSONDecoder = {
-            JSONDecoder()
-        }()
-        
         enum CodingKeys: String, CodingKey {
             case id, appeal
             case flavorTextEntries = "flavor_text_entries"

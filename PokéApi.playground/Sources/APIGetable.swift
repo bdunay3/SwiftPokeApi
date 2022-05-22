@@ -1,9 +1,5 @@
 import Foundation
 
-public protocol SelfDecodable: Decodable {
-    static var decoder: JSONDecoder { get }
-}
-
-public protocol ApiGetable: SelfDecodable {
+public protocol ApiGetable: Decodable {
     static var resource: PokeApiResourceType { get }
 }

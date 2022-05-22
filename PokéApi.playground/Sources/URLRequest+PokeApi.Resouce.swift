@@ -11,4 +11,11 @@ public extension URLRequest {
         
         self.init(url: requestUrl)
     }
+    
+    init(resource: PokeApi.Resource, startingAt startIndex: Int, itemsPerPage limit: Int) {
+        self.init(resource: resource, parameters: [
+            URLQueryItem(name: "offset", value: "\(startIndex)"),
+            URLQueryItem(name: "limit", value: "\(limit)")
+        ])
+    }
 }

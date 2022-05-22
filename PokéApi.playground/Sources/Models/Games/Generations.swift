@@ -3,9 +3,6 @@ import Foundation
 extension Games {
     public struct Generations: ApiGetable {
         public static var resource: PokeApiResourceType = PokeApi.Resource.Games.generations
-        public static var decoder: JSONDecoder = {
-            JSONDecoder()
-        }()
         
         enum CodingKeys: String, CodingKey {
             case id, name, abilities, names

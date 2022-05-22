@@ -4,10 +4,6 @@ extension Locations {
     public struct Areas: ApiGetable {
         public static let resource: PokeApiResourceType = PokeApi.Resource.Locations.locationArea
         
-        public static var decoder: JSONDecoder = {
-            JSONDecoder()
-        }()
-        
         public struct EncounterMethodRate: Decodable {
             enum CodingKeys: String, CodingKey {
                 case encounterMethod = "encounter_method"

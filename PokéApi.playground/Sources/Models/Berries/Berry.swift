@@ -3,9 +3,6 @@ import Foundation
 extension Berries {
     public struct Berry: ApiGetable {
         public static var resource: PokeApiResourceType = PokeApi.Resource.Berries.berries
-        public static var decoder: JSONDecoder = {
-            JSONDecoder()
-        }()
         
         public struct Map: Decodable {
             public let potency: Int
