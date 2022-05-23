@@ -6,10 +6,10 @@ import PackageDescription
 let package = Package(
     name: "SwiftPokeApi",
     platforms: [
-        .macOS(.v10_15),
+        .macOS(.v11),
         .iOS(.v13),
-        .watchOS(.v6),
-        .tvOS(.v13)
+        .watchOS(.v7),
+        .tvOS(.v14)
     ],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
