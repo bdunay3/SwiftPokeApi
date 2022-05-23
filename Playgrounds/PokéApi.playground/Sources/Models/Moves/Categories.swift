@@ -6,7 +6,7 @@ extension Moves {
         
         let id: Int
         let name: String
-        let moves: [NamedAPIResource]
+        let moves: [NamedAPIResource<Moves>]
         let descriptions: [Description]
     }
 }

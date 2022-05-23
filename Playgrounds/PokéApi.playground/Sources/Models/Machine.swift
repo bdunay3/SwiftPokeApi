@@ -9,7 +9,7 @@ public struct Machine: ApiGetable {
     }
     
     public let id: Int
-    public let item: NamedAPIResource
-    public let move: NamedAPIResource
-    public let versionGroup: NamedAPIResource
+    public let item: NamedAPIResource<Items.Item>
+    public let move: NamedAPIResource<Moves>
+    public let versionGroup: NamedAPIResource<Games.VersionGroups>
 }

@@ -6,7 +6,7 @@ extension Berries {
         
         public struct Map: Decodable {
             public let potency: Int
-            public let flavor: NamedAPIResource
+            public let flavor: NamedAPIResource<Flavors>
         }
         
         enum CodingKeys: String, CodingKey {
@@ -28,9 +28,9 @@ extension Berries {
         let size: Int
         let smoothness: Int
         let soilDryness: Int
-        let firmness: NamedAPIResource
+        let firmness: NamedAPIResource<Firmnesses>
         let flavors: [Map]
-        let item: NamedAPIResource
-        let naturalGiftType: NamedAPIResource
+        let item: NamedAPIResource<Items.Item>
+        let naturalGiftType: NamedAPIResource<Pokemon.PokemonType>
     }
 }

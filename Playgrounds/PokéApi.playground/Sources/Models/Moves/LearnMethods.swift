@@ -13,6 +13,6 @@ extension Moves {
         let name: String
         let descriptions: [Description]
         let names: [Name]
-        let versionGroups: [NamedAPIResource]
+        let versionGroups: [NamedAPIResource<Games.VersionGroups>]
     }
 }

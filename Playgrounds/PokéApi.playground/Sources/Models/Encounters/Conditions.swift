@@ -7,6 +7,6 @@ extension Encounters {
         let id: Int
         let name: String
         let names: [Name]
-        let values: [NamedAPIResource]
+        let values: [NamedAPIResource<ConditionValues>]
     }
 }

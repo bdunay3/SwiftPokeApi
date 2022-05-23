@@ -4,9 +4,8 @@ import Foundation
 var cancellables = [AnyCancellable]()
 let api = PokeApi()
 
-api.getPage(of: .pokemon, from: 0, limit: 10)
-    .map(\.results)
-    .flatMap(\.publisher)
+api.getPage(of: Pokemon.self, from: 0, limit: 10)
+    .flatMap(\.results.publisher)
     .flatMap { api.get(Pokemon.self, at: $0.url) }
     .sink {
         // We go notified when we're done with the entire chain

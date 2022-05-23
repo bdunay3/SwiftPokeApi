@@ -6,7 +6,7 @@ extension Encounters {
         
         let id: Int
         let name: String
-        let condition: NamedAPIResource
+        let condition: NamedAPIResource<Encounters.Conditions>
         let names: [Name]
     }
 }

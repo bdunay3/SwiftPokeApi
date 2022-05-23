@@ -3,8 +3,8 @@ import Foundation
 public struct Pokemon: ApiGetable {
     public static let resource: PokeApiResourceType = PokeApi.Resource.pokemon
     
-    public struct Ability: Decodable {
-        public let ability: NamedAPIResource
+    public struct Abilities: Decodable {
+        public let ability: NamedAPIResource<Ability>
         public let isHidden: Bool
         public let slot: Int
 
@@ -17,13 +17,13 @@ public struct Pokemon: ApiGetable {
     
     public struct FormType: Decodable {
         public let slot: Int
-        public let `type`: NamedAPIResource
+        public let `type`: NamedAPIResource<Types>
     }
     
     // MARK: - GameIndex
     public struct GameIndex: Decodable {
         public let gameIndex: Int
-        public let version: NamedAPIResource
+        public let version: NamedAPIResource<Games.Version>
 
         enum CodingKeys: String, CodingKey {
             case gameIndex = "game_index"
@@ -33,7 +33,7 @@ public struct Pokemon: ApiGetable {
     
     public struct HeldItem: Decodable {
         public struct Version: Decodable {
-            public let version: NamedAPIResourceList
+            public let version: NamedAPIResource<Games.Version>
             public let rarity: Int
         }
         
@@ -42,14 +42,14 @@ public struct Pokemon: ApiGetable {
             case versionDetails = "version_details"
         }
         
-        public let item: NamedAPIResource
+        public let item: NamedAPIResource<Items.Item>
         public let versionDetails: Version
     }
     
     public struct Move: Decodable {
         public struct Version: Decodable {
-            let moveLearnMethod: NamedAPIResource
-            let versionGroup: NamedAPIResource
+            let moveLearnMethod: NamedAPIResource<Moves.LearnMethods>
+            let versionGroup: NamedAPIResource<Games.VersionGroups>
             let levelLearnedAt: Int
             
             enum CodingKeys: String, CodingKey {
@@ -59,7 +59,7 @@ public struct Pokemon: ApiGetable {
             }
         }
         
-        public let move: NamedAPIResource
+        public let move: NamedAPIResource<Moves>
         public let versionGroupDetails: [Version]
         
         enum CodingKeys: String, CodingKey {
@@ -75,11 +75,11 @@ public struct Pokemon: ApiGetable {
         }
         
         public let slot: Int
-        public let theType: NamedAPIResource
+        public let theType: NamedAPIResource<Types>
     }
     
     public struct PastType: Decodable {
-        public let generation: NamedAPIResource
+        public let generation: NamedAPIResource<Games.Generations>
         public let types: [PokemonType]
     }
     
@@ -106,8 +106,8 @@ public struct Pokemon: ApiGetable {
         }
     }
     
-    public struct Stat: Decodable {
-        public let stat: NamedAPIResource
+    public struct Stats: Decodable {
+        public let stat: NamedAPIResource<Stat>
         public let effort: Int
         public let baseStat: Int
         
@@ -136,9 +136,9 @@ public struct Pokemon: ApiGetable {
     
     // MARK: - Properties
     
-    public let abilities: [Ability]
+    public let abilities: [Abilities]
     public let baseExperience: Int
-    public let forms: [NamedAPIResource]
+    public let forms: [NamedAPIResource<Forms>]
     public let gameIndices: [GameIndex]
     public let height: Int
     public let heldItems: [HeldItem]
@@ -149,9 +149,9 @@ public struct Pokemon: ApiGetable {
     public let name: String
     public let order: Int
     public let pastTypes: [PastType]
-    public let species: NamedAPIResource
+    public let species: NamedAPIResource<Species>
     public let sprites: Sprites
-    public let stats: [Stat]
+    public let stats: [Pokemon.Stats]
     public let types: [PokemonType]
     public let weight: Int
 }
