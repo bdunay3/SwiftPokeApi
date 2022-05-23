@@ -7,7 +7,7 @@ extension Moves {
         let id: Int
         let name: String
         let descriptions: [Description]
-        let moves: [NamedAPIResource]
+        let moves: [NamedAPIResource<Moves>]
         let names: [Name]
     }
 }

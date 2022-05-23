@@ -16,6 +16,8 @@ public extension PokeApi {
         return get(type, request: urlRequest)
     }
     
+    // MARK: Get By ID or Name
+    
     func get<PokeApiData: ApiGetable>(_ type: PokeApiData.Type, byName name: String) -> AnyPublisher<PokeApiData, Error> {
         get(type, at: PokeApiData.resource.url(name: name))
     }
@@ -24,8 +26,23 @@ public extension PokeApi {
         get(type, at: PokeApiData.resource.url(id: id))
     }
     
-    func getPage(of resource: PokeApi.Resource, from startIndex: Int, limit: Int) -> AnyPublisher<NamedAPIResourceList, Error> {
-        get(NamedAPIResourceList.self, request: .init(resource: resource, startingAt: startIndex, itemsPerPage: limit))
+    // MARK: Get as Page of Resources
+    
+    func getPage<PokeApiData: ApiGetable>(of type: PokeApiData.Type, from startIndex: Int, limit: Int) -> AnyPublisher<NamedAPIResourceList<PokeApiData>, Error> {
+        get(
+            NamedAPIResourceList<PokeApiData>.self,
+            request: .init(resource: PokeApiData.resource,
+                           startingAt: startIndex,
+                           itemsPerPage: limit)
+        )
+    }
+    
+    func getResourcesForPage<PokeApiData: ApiGetable>(of type: PokeApiData.Type, from startIndex: Int, limit: Int) -> AnyPublisher<PokeApiData, Error> {
+        getPage(of: type, from: startIndex, limit: limit)
+            .flatMap {
+                $0.itemsPublisher(using: self)
+            }
+            .eraseToAnyPublisher()  
     }
     
     private func processResponse(output: URLSession.DataTaskPublisher.Output) throws -> Data {

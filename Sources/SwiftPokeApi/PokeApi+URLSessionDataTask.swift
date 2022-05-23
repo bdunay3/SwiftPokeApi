@@ -61,15 +61,15 @@ public extension PokeApi {
             result: result)
     }
     
-    func getPage(of resource: PokeApi.Resource,
-                 from startIndex: Int,
-                 limit: Int,
-                 result: @escaping PokeApiResult<NamedAPIResourceList>) -> URLSessionDataTask {
-        
-        get(NamedAPIResourceList.self,
-            request: .init(resource: resource, startingAt: startIndex, itemsPerPage: limit),
-            result: result)
-    }
+//    func getPage(of resource: PokeApi.Resource,
+//                 from startIndex: Int,
+//                 limit: Int,
+//                 result: @escaping PokeApiResult<NamedAPIResourceList>) -> URLSessionDataTask {
+//        
+//        get(NamedAPIResourceList.self,
+//            request: .init(resource: resource, startingAt: startIndex, itemsPerPage: limit),
+//            result: result)
+//    }
     
     private func processResponse(response: URLResponse?, error: Error?) -> Error? {
         if let error = error { return error }

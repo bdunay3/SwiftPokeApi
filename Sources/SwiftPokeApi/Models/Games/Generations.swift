@@ -15,12 +15,12 @@ extension Games {
         
         let id: Int
         let name: String
-        let abilities: [NamedAPIResource]
+        let abilities: [NamedAPIResource<Pokemon.Ability>]
         let names: [Name]
-        let mainRegion: NamedAPIResource
-        let moves: [NamedAPIResource]
-        let pokemonSpecies: [NamedAPIResource]
-        let types: [NamedAPIResource]
-        let versionGroups: [NamedAPIResource]
+        let mainRegion: NamedAPIResource<Locations.Regions>
+        let moves: [NamedAPIResource<Moves>]
+        let pokemonSpecies: [NamedAPIResource<Pokemon.Species>]
+        let types: [NamedAPIResource<Pokemon.Types>]
+        let versionGroups: [NamedAPIResource<Games.VersionGroups>]
     }
 }

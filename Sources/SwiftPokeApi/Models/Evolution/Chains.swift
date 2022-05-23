@@ -13,7 +13,7 @@ public enum Evolution {
             }
             
             public let isBaby: Bool
-            public let species: NamedAPIResource
+            public let species: NamedAPIResource<Pokemon.Species>
             public let evolutionDetails: [EvolutionDetail]
             public let evolvesTo: [Link]
         }
@@ -38,23 +38,23 @@ public enum Evolution {
                 case turnUpsideDown = "turn_upside_down"
             }
             
-            public let item: NamedAPIResource?
-            public let trigger: NamedAPIResource
+            public let item: NamedAPIResource<Items.Item>?
+            public let trigger: NamedAPIResource<Triggers>
             public let gender: Int?
-            public let heldItem: NamedAPIResource?
-            public let knownMove: NamedAPIResource?
-            public let knownMoveType: NamedAPIResource?
-            public let location: NamedAPIResource?
+            public let heldItem: NamedAPIResource<Items.Item>?
+            public let knownMove: NamedAPIResource<Moves>?
+            public let knownMoveType: NamedAPIResource<Pokemon.Types>?
+            public let location: NamedAPIResource<Locations>?
             public let minLevel: Int?
             public let minHappiness: Int?
             public let minBeauty: Int?
             public let minAffection: Int?
             public let needsOverworldRain: Bool
-            public let partySpecies: NamedAPIResource?
-            public let partyType: NamedAPIResource?
+            public let partySpecies: NamedAPIResource<Pokemon.Species>?
+            public let partyType: NamedAPIResource<Pokemon.Types>?
             public let relativePhysicalStats: Int?
             public let timeOfDay: String
-            public let tradeSpecies: NamedAPIResource?
+            public let tradeSpecies: NamedAPIResource<Pokemon.Species>?
             public let turnUpsideDown: Bool
         }
         
@@ -65,7 +65,7 @@ public enum Evolution {
         }
         
         public let id: Int
-        public let babyTriggerItem: NamedAPIResource?
+        public let babyTriggerItem: NamedAPIResource<Items.Item>?
         public let chain: Link
     }
 }

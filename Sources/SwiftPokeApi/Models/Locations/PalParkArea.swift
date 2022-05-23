@@ -13,7 +13,7 @@ extension Locations {
             
             let baseScore: Int
             let rate: Int
-            let pokemonSpecies: NamedAPIResource
+            let pokemonSpecies: NamedAPIResource<Pokemon.Species>
         }
         
         enum CodingKeys: String, CodingKey {

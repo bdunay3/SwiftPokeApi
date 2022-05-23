@@ -10,13 +10,13 @@ extension Locations {
                 case versionDetails = "version_details"
             }
 
-            public let encounterMethod: NamedAPIResource
+            public let encounterMethod: NamedAPIResource<Encounters.Methods>
             public let versionDetails: [EncounterVersionDetails]
         }
 
         public struct EncounterVersionDetails: Decodable {
             public let rate: Int
-            public let version: NamedAPIResource
+            public let version: NamedAPIResource<Games.Version>
         }
 
         public struct PokemonEncounter: Decodable {
@@ -25,7 +25,7 @@ extension Locations {
                 case versionDetails = "version_details"
             }
 
-            public let pokemon: NamedAPIResource
+            public let pokemon: NamedAPIResource<Pokemon>
             public let versionDetails: [VersionEncounterDetail]
         }
         
@@ -41,7 +41,7 @@ extension Locations {
         public let name: String
         public let gameIndex: Int
         public let encounterMethodRates: [EncounterMethodRate]
-        public let location: NamedAPIResource
+        public let location: NamedAPIResource<Locations>
         public let names: [Name]
         public let pokemonEncounters: [PokemonEncounter]
     }

@@ -13,6 +13,6 @@ extension Items {
         let id: Int
         let name: String
         let effectEntries: [Effect]
-        let items: [NamedAPIResource]
+        let items: [NamedAPIResource<Item>]
     }
 }

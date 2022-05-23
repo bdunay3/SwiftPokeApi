@@ -47,8 +47,9 @@ extension PokeApi {
             }
         }
         
-        case pokemon = "pokemon"
+        case language = "language"
         case machine = "machine"
+        case pokemon = "pokemon"
         
         public var canFetchByName: Bool {
             switch self {
