@@ -6,7 +6,8 @@
         <page name='URLSessionTask - Get Name &amp; Height for Range'/>
         <page name='Combine - Get Name &amp; Height for Range'/>
         <page name='Combine - Get Common Moves Between Pokemon'/>
-        <page name='Display Pokemon Info'/>
+        <page name='SwiftUI - Display Single Pokemon Info'/>
         <page name='Test All the Things'/>
+        <page name='SwiftUI - Display List of All Pokemon'/>
     </pages>
 </playground>
