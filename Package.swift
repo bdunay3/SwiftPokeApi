@@ -7,7 +7,7 @@ let package = Package(
     name: "SwiftPokeApi",
     platforms: [
         .macOS(.v11),
-        .iOS(.v13),
+        .iOS(.v14),
         .watchOS(.v7),
         .tvOS(.v14)
     ],
