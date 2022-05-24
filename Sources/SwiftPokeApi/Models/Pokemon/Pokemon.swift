@@ -43,7 +43,7 @@ public struct Pokemon: ApiGetable {
         }
         
         public let item: NamedAPIResource<Items.Item>
-        public let versionDetails: Version
+        public let versionDetails: [Pokemon.HeldItem.Version]
     }
     
     public struct Move: Decodable {

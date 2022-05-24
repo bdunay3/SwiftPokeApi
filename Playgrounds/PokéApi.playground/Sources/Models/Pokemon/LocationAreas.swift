@@ -8,7 +8,7 @@ extension Pokemon {
         }
         
         public let locationArea: NamedAPIResource<Locations.Areas>
-        public let versionDetails: VersionEncounterDetail
+        public let versionDetails: [VersionEncounterDetail]
     }
 
 }
