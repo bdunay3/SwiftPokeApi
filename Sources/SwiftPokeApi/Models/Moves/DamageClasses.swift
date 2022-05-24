@@ -4,10 +4,10 @@ extension Moves {
     public struct DamageClasses: ApiGetable {
         public static let resource: PokeApiResourceType = PokeApi.Resource.Moves.damageClass
         
-        let id: Int
-        let name: String
-        let descriptions: [Description]
-        let moves: [NamedAPIResource<Moves>]
-        let names: [Name]
+        public let id: Int
+        public let name: String
+        public let descriptions: [Description]
+        public let moves: [NamedAPIResource<Moves>]
+        public let names: [Name]
     }
 }

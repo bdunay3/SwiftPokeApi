@@ -48,9 +48,9 @@ public struct Pokemon: ApiGetable {
     
     public struct Move: Decodable {
         public struct Version: Decodable {
-            let moveLearnMethod: NamedAPIResource<Moves.LearnMethods>
-            let versionGroup: NamedAPIResource<Games.VersionGroups>
-            let levelLearnedAt: Int
+            public let moveLearnMethod: NamedAPIResource<Moves.LearnMethods>
+            public let versionGroup: NamedAPIResource<Games.VersionGroups>
+            public let levelLearnedAt: Int
             
             enum CodingKeys: String, CodingKey {
                 case moveLearnMethod = "move_learn_method"

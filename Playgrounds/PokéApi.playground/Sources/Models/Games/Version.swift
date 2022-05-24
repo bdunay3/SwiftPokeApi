@@ -9,9 +9,9 @@ extension Games {
             case versionGroup = "version_group"
         }
         
-        let id: Int
-        let name: String
-        let names: [Name]
-        let versionGroup: NamedAPIResource<VersionGroups>
+        public let id: Int
+        public let name: String
+        public let names: [Name]
+        public let versionGroup: NamedAPIResource<VersionGroups>
     }
 }

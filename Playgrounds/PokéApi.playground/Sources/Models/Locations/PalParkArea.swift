@@ -11,9 +11,9 @@ extension Locations {
                 case pokemonSpecies = "pokemon_species"
             }
             
-            let baseScore: Int
-            let rate: Int
-            let pokemonSpecies: NamedAPIResource<Pokemon.Species>
+            public let baseScore: Int
+            public let rate: Int
+            public let pokemonSpecies: NamedAPIResource<Pokemon.Species>
         }
         
         enum CodingKeys: String, CodingKey {
@@ -21,9 +21,9 @@ extension Locations {
             case pokemonEncounters = "pokemon_encounters"
         }
         
-        let id: Int
-        let name: String
-        let names: [Name]
-        let pokemonEncounters: [EncounterSpecies]
+        public let id: Int
+        public let name: String
+        public let names: [Name]
+        public let pokemonEncounters: [EncounterSpecies]
     }
 }

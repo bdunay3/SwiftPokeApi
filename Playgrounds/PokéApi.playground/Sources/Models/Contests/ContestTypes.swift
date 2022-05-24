@@ -5,9 +5,9 @@ extension Contests {
         public static let resource: PokeApiResourceType = PokeApi.Resource.Contests.types
         
         public struct ContestName: Decodable {
-            let name: String
-            let color: String
-            let language: NamedAPIResource<Language>
+            public let name: String
+            public let color: String
+            public let language: NamedAPIResource<Language>
         }
         
         enum CodingKeys: String, CodingKey {

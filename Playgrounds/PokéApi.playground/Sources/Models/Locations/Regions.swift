@@ -11,12 +11,12 @@ extension Locations {
             case versionGroups = "version_groups"
         }
         
-        let id: Int
-        let locations: [NamedAPIResource<Locations>]
-        let name: String
-        let names: [Name]
-        let mainGeneration: NamedAPIResource<Games.Generations>
-        let pokedexes: [NamedAPIResource<Games.Pokedexes>]
-        let versionGroups: [NamedAPIResource<Games.VersionGroups>]
+        public let id: Int
+        public let locations: [NamedAPIResource<Locations>]
+        public let name: String
+        public let names: [Name]
+        public let mainGeneration: NamedAPIResource<Games.Generations>
+        public let pokedexes: [NamedAPIResource<Games.Pokedexes>]
+        public let versionGroups: [NamedAPIResource<Games.VersionGroups>]
     }
 }

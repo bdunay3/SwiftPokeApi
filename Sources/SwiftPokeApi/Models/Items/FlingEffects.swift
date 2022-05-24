@@ -10,9 +10,9 @@ extension Items {
             case items
         }
         
-        let id: Int
-        let name: String
-        let effectEntries: [Effect]
-        let items: [NamedAPIResource<Item>]
+        public let id: Int
+        public let name: String
+        public let effectEntries: [Effect]
+        public let items: [NamedAPIResource<Item>]
     }
 }

@@ -9,5 +9,4 @@ extension Berries {
         public let berries: [NamedAPIResource<Berries.Berry>]
         public let names: [Name]
     }
-
 }

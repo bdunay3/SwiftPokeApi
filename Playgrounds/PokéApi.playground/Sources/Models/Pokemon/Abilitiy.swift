@@ -27,9 +27,9 @@ extension Pokemon {
         }
         
         public struct Pokemon: Decodable {
-            let isHidden: Bool
-            let slot: Int
-            let pokemon: NamedAPIResource<Pokemon>
+            public let isHidden: Bool
+            public let slot: Int
+            public let pokemon: NamedAPIResource<Pokemon>
             
             enum CodingKeys: String, CodingKey {
                 case isHidden = "is_hidden"

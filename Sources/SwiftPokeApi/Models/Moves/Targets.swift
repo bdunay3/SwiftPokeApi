@@ -4,10 +4,10 @@ extension Moves {
     public struct Targets: ApiGetable {
         public static let resource: PokeApiResourceType = PokeApi.Resource.Moves.target
         
-        let id: Int
-        let name: String
-        let descriptions: [Description]
-        let moves: [NamedAPIResource<Moves>]
-        let names: [Name]
+        public let id: Int
+        public let name: String
+        public let descriptions: [Description]
+        public let moves: [NamedAPIResource<Moves>]
+        public let names: [Name]
     }
 }

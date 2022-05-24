@@ -13,14 +13,14 @@ extension Games {
             case versionGroups = "version_groups"
         }
         
-        let id: Int
-        let name: String
-        let abilities: [NamedAPIResource<Pokemon.Ability>]
-        let names: [Name]
-        let mainRegion: NamedAPIResource<Locations.Regions>
-        let moves: [NamedAPIResource<Moves>]
-        let pokemonSpecies: [NamedAPIResource<Pokemon.Species>]
-        let types: [NamedAPIResource<Pokemon.Types>]
-        let versionGroups: [NamedAPIResource<Games.VersionGroups>]
+        public let id: Int
+        public let name: String
+        public let abilities: [NamedAPIResource<Pokemon.Ability>]
+        public let names: [Name]
+        public let mainRegion: NamedAPIResource<Locations.Regions>
+        public let moves: [NamedAPIResource<Moves>]
+        public let pokemonSpecies: [NamedAPIResource<Pokemon.Species>]
+        public let types: [NamedAPIResource<Pokemon.Types>]
+        public let versionGroups: [NamedAPIResource<Games.VersionGroups>]
     }
 }

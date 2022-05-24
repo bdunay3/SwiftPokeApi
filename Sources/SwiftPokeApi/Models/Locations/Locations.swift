@@ -9,10 +9,10 @@ public struct Locations: ApiGetable {
         case areas
     }
     
-    let id: Int
-    let name: String
-    let region: NamedAPIResource<Regions>
-    let names: [Name]
-    let gameIndices: [GenerationGameIndex]
-    let areas: [NamedAPIResource<Areas>]
+    public let id: Int
+    public let name: String
+    public let region: NamedAPIResource<Regions>
+    public let names: [Name]
+    public let gameIndices: [GenerationGameIndex]
+    public let areas: [NamedAPIResource<Areas>]
 }

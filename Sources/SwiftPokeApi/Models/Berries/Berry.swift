@@ -20,17 +20,17 @@ extension Berries {
             case naturalGiftType = "natural_gift_type"
         }
         
-        let id: Int
-        let name: String
-        let growthTime: Int
-        let maxHarvest: Int
-        let naturalGiftPower: Int
-        let size: Int
-        let smoothness: Int
-        let soilDryness: Int
-        let firmness: NamedAPIResource<Firmnesses>
-        let flavors: [Map]
-        let item: NamedAPIResource<Items.Item>
-        let naturalGiftType: NamedAPIResource<Pokemon.PokemonType>
+        public let id: Int
+        public let name: String
+        public let growthTime: Int
+        public let maxHarvest: Int
+        public let naturalGiftPower: Int
+        public let size: Int
+        public let smoothness: Int
+        public let soilDryness: Int
+        public let firmness: NamedAPIResource<Firmnesses>
+        public let flavors: [Map]
+        public let item: NamedAPIResource<Items.Item>
+        public let naturalGiftType: NamedAPIResource<Pokemon.PokemonType>
     }
 }

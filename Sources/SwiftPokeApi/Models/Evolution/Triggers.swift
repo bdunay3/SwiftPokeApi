@@ -9,9 +9,9 @@ extension Evolution {
             case pokemonSpecies = "pokemon_species"
         }
         
-        let id: Int
-        let name: String
-        let names: [Name]
-        let pokemonSpecies: [NamedAPIResource<Pokemon.Species>]
+        public let id: Int
+        public let name: String
+        public let names: [Name]
+        public let pokemonSpecies: [NamedAPIResource<Pokemon.Species>]
     }
 }

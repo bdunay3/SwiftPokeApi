@@ -10,8 +10,8 @@ extension Games {
                 case pokemonSpecies = "pokemon_species"
             }
             
-            let entryNumber: Int
-            let pokemonSpecies: NamedAPIResource<Pokemon.Species>
+            public let entryNumber: Int
+            public let pokemonSpecies: NamedAPIResource<Pokemon.Species>
         }
         
         enum CodingKeys: String, CodingKey {
@@ -23,13 +23,13 @@ extension Games {
             case versionGroup = "version_groups"
         }
         
-        let id: Int
-        let name: String
-        let isMainSeries: Bool
-        let descriptions: [Description]
-        let names: [Name]
-        let pokemonEntries: [PokemonEntry]
-        let region: NamedAPIResource<Locations.Regions>?
-        let versionGroup: [NamedAPIResource<Games.VersionGroups>]
+        public let id: Int
+        public let name: String
+        public let isMainSeries: Bool
+        public let descriptions: [Description]
+        public let names: [Name]
+        public let pokemonEntries: [PokemonEntry]
+        public let region: NamedAPIResource<Locations.Regions>?
+        public let versionGroup: [NamedAPIResource<Games.VersionGroups>]
     }
 }
