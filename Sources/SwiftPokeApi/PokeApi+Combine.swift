@@ -12,6 +12,7 @@ public extension PokeApi {
     func get<PokeApiData: Decodable>(_ type: PokeApiData.Type, at url: URL) -> AnyPublisher<PokeApiData, Error> {
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "GET"
+        urlRequest.cachePolicy = .returnCacheDataElseLoad
         
         return get(type, request: urlRequest)
     }

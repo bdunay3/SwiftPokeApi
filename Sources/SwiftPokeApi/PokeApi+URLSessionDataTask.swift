@@ -41,6 +41,7 @@ public extension PokeApi {
                                          result: @escaping PokeApiResult<PokeApiData>) -> URLSessionDataTask {
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "GET"
+        urlRequest.cachePolicy = .returnCacheDataElseLoad
         
         return get(type, request: urlRequest, result: result)
     }
@@ -60,16 +61,6 @@ public extension PokeApi {
             at: PokeApiData.resource.url(id: id),
             result: result)
     }
-    
-//    func getPage(of resource: PokeApi.Resource,
-//                 from startIndex: Int,
-//                 limit: Int,
-//                 result: @escaping PokeApiResult<NamedAPIResourceList>) -> URLSessionDataTask {
-//        
-//        get(NamedAPIResourceList.self,
-//            request: .init(resource: resource, startingAt: startIndex, itemsPerPage: limit),
-//            result: result)
-//    }
     
     private func processResponse(response: URLResponse?, error: Error?) -> Error? {
         if let error = error { return error }
