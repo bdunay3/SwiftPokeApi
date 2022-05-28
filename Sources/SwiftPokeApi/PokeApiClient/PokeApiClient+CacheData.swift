@@ -25,4 +25,9 @@ public extension PokeApiClient {
     func getCachedResource<PokeApiData: PokeApiGetable>(_ type: PokeApiData.Type, name: String, cachePolicy: URLRequest.CachePolicy? = nil) throws -> PokeApiData? {
         try getCachedResource(type, request: urlGetRequest(for: type, name: name, cachePolicy: cachePolicy))
     }
+    
+    func getCachedPage<PokeApiData: PokeApiGetable>(of type: PokeApiData.Type, from startIndex: Int, limit: Int, cachePolicy: URLRequest.CachePolicy? = nil) throws -> NamedAPIResourceList<PokeApiData>? {
+        try getCachedResource(NamedAPIResourceList<PokeApiData>.self,
+                              request: urlGetPageRequest(of: type, from: startIndex, limit: limit, cachePolicy: cachePolicy))
+    }
 }
