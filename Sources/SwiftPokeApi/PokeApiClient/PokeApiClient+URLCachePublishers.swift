@@ -3,16 +3,19 @@ import Foundation
 
 public extension PokeApiClient {
     func getCachedResourcePublisher<PokeApiData: Decodable>(_ type: PokeApiData.Type, request: URLRequest) -> AnyPublisher<PokeApiData, Error> {
-        let cachedResponse = session.configuration.urlCache?.cachedResponse(for: request)
         
-        return Just<CachedURLResponse?>(cachedResponse)
-            .tryMap {
-                guard let cachedResponse = $0 else { throw ApiError.requestNotCached }
-                return cachedResponse
+        Future<CachedURLResponse?, Error> { [cachesQueue, urlCache] promise in
+            cachesQueue.async {
+                promise(.success(urlCache?.cachedResponse(for: request)))
             }
-            .tryMap(processCachedResponse(_:))
-            .decode(type: PokeApiData.self, decoder: decoder)
-            .eraseToAnyPublisher()
+        }
+        .tryMap {
+            guard let cachedResponse = $0 else { throw ApiError.requestNotCached }
+            return cachedResponse
+        }
+        .tryMap(processCachedResponse(_:))
+        .decode(type: PokeApiData.self, decoder: decoder)
+        .eraseToAnyPublisher()
     }
     
     func getCachedResourcePublisher<PokeApiData: Decodable>(_ type: PokeApiData.Type, at url: URL, cachePolicy: URLRequest.CachePolicy? = nil) -> AnyPublisher<PokeApiData, Error> {

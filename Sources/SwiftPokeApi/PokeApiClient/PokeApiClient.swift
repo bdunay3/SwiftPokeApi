@@ -24,6 +24,11 @@ public final class PokeApiClient {
         let decoder = JSONDecoder()
         return decoder
     }()
+    public let cachesQueue = DispatchQueue(label: "PokeApiClientCache Queue", qos: .utility)
+    
+    public var urlCache: URLCache? {
+        session.configuration.urlCache
+    }
     
     public init(session: URLSession = defaultCachedSession) {
         self.session = session
