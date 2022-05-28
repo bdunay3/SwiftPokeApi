@@ -2,6 +2,7 @@ import Foundation
 
 public extension PokeApi {
     typealias PokeApiResult<PokeApiData: Decodable> = (Result<PokeApiData, Error>) -> Void
+    typealias PokeApiPageResult<PokeApiData: ApiGetable> = (Result<NamedAPIResourceList<PokeApiData>, Error>) -> Void
     
     @discardableResult
     func get<PokeApiData: Decodable>(_ type: PokeApiData.Type,
@@ -46,6 +47,9 @@ public extension PokeApi {
         return get(type, request: urlRequest, result: result)
     }
     
+    // MARK: - Get By ID or Name
+    
+    @discardableResult
     func get<PokeApiData: ApiGetable>(_ type: PokeApiData.Type,
                                       byName name: String,
                                       result: @escaping PokeApiResult<PokeApiData>) -> URLSessionDataTask {
@@ -54,6 +58,7 @@ public extension PokeApi {
             result: result)
     }
     
+    @discardableResult
     func get<PokeApiData: ApiGetable>(_ type: PokeApiData.Type,
                                       byId id: Int,
                                       result: @escaping PokeApiResult<PokeApiData>) -> URLSessionDataTask {
@@ -62,7 +67,22 @@ public extension PokeApi {
             result: result)
     }
     
-    private func processResponse(response: URLResponse?, error: Error?) -> Error? {
+    // MARK: - Get as Page of Resources
+    
+    @discardableResult
+    func getPage<PokeApiData: ApiGetable>(of type: PokeApiData.Type, from startIndex: Int, limit: Int, cachePolicy: URLRequest.CachePolicy? = nil, result: @escaping PokeApiPageResult<PokeApiData>) -> URLSessionDataTask {
+        
+        get(NamedAPIResourceList<PokeApiData>.self,
+            request: urlGetPageRequest(of: type,
+                                       from: startIndex,
+                                       limit: limit,
+                                       cachePolicy: cachePolicy),
+            result: result)
+    }
+    
+    // MARK: - Error Processing
+    
+    internal func processResponse(response: URLResponse?, error: Error?) -> Error? {
         if let error = error { return error }
         
         guard let response = response as? HTTPURLResponse else {

@@ -24,7 +24,7 @@ public extension PokeApi {
         return get(type, request: urlGetRequest(for: url, cachePolicy: cachePolicy))
     }
     
-    // MARK: Get By ID or Name
+    // MARK: - Get By ID or Name
     
     func get<PokeApiData: ApiGetable>(_ type: PokeApiData.Type, byName name: String, cachePolicy: URLRequest.CachePolicy? = nil) -> AnyPublisher<PokeApiData, Error> {
         get(type, at: PokeApiData.resource.url(name: name))
@@ -34,7 +34,7 @@ public extension PokeApi {
         get(type, at: PokeApiData.resource.url(id: id))
     }
     
-    // MARK: Get as Page of Resources
+    // MARK: - Get as Page of Resources
     
     func getPage<PokeApiData: ApiGetable>(of type: PokeApiData.Type, from startIndex: Int, limit: Int, cachePolicy: URLRequest.CachePolicy? = nil) -> AnyPublisher<NamedAPIResourceList<PokeApiData>, Error> {
         
@@ -49,6 +49,8 @@ public extension PokeApi {
             }
             .eraseToAnyPublisher()  
     }
+    
+    // MARK: - Error Processing
     
     internal func processResponse(output: URLSession.DataTaskPublisher.Output) throws -> Data {
         guard let response = output.response as? HTTPURLResponse else {
