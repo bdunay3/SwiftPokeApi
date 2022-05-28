@@ -24,7 +24,27 @@ public final class PokeApi {
         return decoder
     }()
     
-    public init(session: URLSession = URLSession.shared) {
+    public init(session: URLSession = cachedSession) {
         self.session = session
+    }
+}
+
+extension PokeApi {
+    public static var cachedSession: URLSession {
+        let config = URLSessionConfiguration.default
+        
+        let cachesDirUrl = try? FileManager.default.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: true).appendingPathComponent("PokeApiDemo")
+        let cache = URLCache(memoryCapacity: 16.asMegaBytes, diskCapacity: 128.asMegaBytes, directory: cachesDirUrl)
+        
+        config.urlCache = cache
+        config.requestCachePolicy = .returnCacheDataElseLoad
+        
+        return URLSession(configuration: config)
+    }
+}
+
+private extension Int {
+    var asMegaBytes: Int {
+        self * 1024 * 1024
     }
 }

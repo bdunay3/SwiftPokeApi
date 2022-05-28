@@ -1,9 +1,19 @@
 import Combine
 import Foundation
 
+// MARK: - Fetching Resources
+
 public extension PokeApi {
     func get<PokeApiData: Decodable>(_ type: PokeApiData.Type, request: URLRequest) -> AnyPublisher<PokeApiData, Error> {
-        session.dataTaskPublisher(for: request)
+        if request.cachePolicy == .returnCacheDataElseLoad,
+            let cachedResponse = session.configuration.urlCache?.cachedResponse(for: request) {
+            return Just<CachedURLResponse>(cachedResponse)
+                .tryMap(processCachedResponse(_:))
+                .decode(type: PokeApiData.self, decoder: decoder)
+                .eraseToAnyPublisher()
+        }
+        
+        return session.dataTaskPublisher(for: request)
             .tryMap(processResponse(output:))
             .decode(type: PokeApiData.self, decoder: decoder)
             .eraseToAnyPublisher()
@@ -42,6 +52,10 @@ public extension PokeApi {
                 $0.itemsPublisher(using: self)
             }
             .eraseToAnyPublisher()  
+    }
+    
+    private func processCachedResponse(_ cachedResponse: CachedURLResponse) throws -> Data {
+        return try processResponse(output: (data: cachedResponse.data, response: cachedResponse.response))
     }
     
     private func processResponse(output: URLSession.DataTaskPublisher.Output) throws -> Data {

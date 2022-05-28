@@ -3,46 +3,57 @@ import Foundation
 
 public extension PokeApi {
     func get<PokeApiData: Decodable>(_ type: PokeApiData.Type, request: URLRequest) -> AnyPublisher<PokeApiData, Error> {
-        session.dataTaskPublisher(for: request)
+        if request.cachePolicy == .returnCacheDataElseLoad,
+            let cachedResponse = session.configuration.urlCache?.cachedResponse(for: request) {
+            return Just<CachedURLResponse>(cachedResponse)
+                .tryMap(processCachedResponse(_:))
+                .decode(type: PokeApiData.self, decoder: decoder)
+                .eraseToAnyPublisher()
+        }
+        
+        return session.dataTaskPublisher(for: request)
             .tryMap(processResponse(output:))
             .decode(type: PokeApiData.self, decoder: decoder)
             .eraseToAnyPublisher()
     }
     
-    func get<PokeApiData: Decodable>(_ type: PokeApiData.Type, at url: URL) -> AnyPublisher<PokeApiData, Error> {
+    func get<PokeApiData: Decodable>(_ type: PokeApiData.Type, at url: URL, cachePolicy: URLRequest.CachePolicy? = nil) -> AnyPublisher<PokeApiData, Error> {
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "GET"
+        urlRequest.cachePolicy = cachePolicy ?? .returnCacheDataElseLoad
         
         return get(type, request: urlRequest)
     }
     
     // MARK: Get By ID or Name
     
-    func get<PokeApiData: ApiGetable>(_ type: PokeApiData.Type, byName name: String) -> AnyPublisher<PokeApiData, Error> {
+    func get<PokeApiData: ApiGetable>(_ type: PokeApiData.Type, byName name: String, cachePolicy: URLRequest.CachePolicy? = nil) -> AnyPublisher<PokeApiData, Error> {
         get(type, at: PokeApiData.resource.url(name: name))
     }
     
-    func get<PokeApiData: ApiGetable>(_ type: PokeApiData.Type, byId id: Int) -> AnyPublisher<PokeApiData, Error> {
+    func get<PokeApiData: ApiGetable>(_ type: PokeApiData.Type, byId id: Int, cachePolicy: URLRequest.CachePolicy? = nil) -> AnyPublisher<PokeApiData, Error> {
         get(type, at: PokeApiData.resource.url(id: id))
     }
     
     // MARK: Get as Page of Resources
     
-    func getPage<PokeApiData: ApiGetable>(of type: PokeApiData.Type, from startIndex: Int, limit: Int) -> AnyPublisher<NamedAPIResourceList<PokeApiData>, Error> {
-        get(
-            NamedAPIResourceList<PokeApiData>.self,
-            request: .init(resource: PokeApiData.resource,
-                           startingAt: startIndex,
-                           itemsPerPage: limit)
-        )
+    func getPage<PokeApiData: ApiGetable>(of type: PokeApiData.Type, from startIndex: Int, limit: Int, cachePolicy: URLRequest.CachePolicy? = nil) -> AnyPublisher<NamedAPIResourceList<PokeApiData>, Error> {
+        var urlRequest = URLRequest(resource: PokeApiData.resource, startingAt: startIndex, itemsPerPage: limit)
+        urlRequest.cachePolicy = cachePolicy ?? .returnCacheDataElseLoad
+        
+        return get(NamedAPIResourceList<PokeApiData>.self, request: urlRequest)
     }
     
-    func getResourcesForPage<PokeApiData: ApiGetable>(of type: PokeApiData.Type, from startIndex: Int, limit: Int) -> AnyPublisher<PokeApiData, Error> {
-        getPage(of: type, from: startIndex, limit: limit)
+    func getResourcesForPage<PokeApiData: ApiGetable>(of type: PokeApiData.Type, from startIndex: Int, limit: Int, cachePolicy: URLRequest.CachePolicy? = nil) -> AnyPublisher<PokeApiData, Error> {
+        getPage(of: type, from: startIndex, limit: limit, cachePolicy: cachePolicy)
             .flatMap {
                 $0.itemsPublisher(using: self)
             }
-            .eraseToAnyPublisher()  
+            .eraseToAnyPublisher()
+    }
+    
+    private func processCachedResponse(_ cachedResponse: CachedURLResponse) throws -> Data {
+        return try processResponse(output: (data: cachedResponse.data, response: cachedResponse.response))
     }
     
     private func processResponse(output: URLSession.DataTaskPublisher.Output) throws -> Data {
