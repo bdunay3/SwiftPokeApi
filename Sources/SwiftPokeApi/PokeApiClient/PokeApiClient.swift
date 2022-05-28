@@ -71,6 +71,7 @@ public final class PokeApiClient {
     
     public func urlGetPageRequest<PokeApiData: PokeApiGetable>(of type: PokeApiData.Type, from startIndex: Int, limit: Int, cachePolicy: URLRequest.CachePolicy?) -> URLRequest {
         var urlRequest = URLRequest(resource: PokeApiData.resource, startingAt: startIndex, itemsPerPage: limit)
+        urlRequest.httpMethod = "GET"
         urlRequest.cachePolicy = cachePolicy ?? .returnCacheDataElseLoad
         
         return urlRequest
