@@ -20,7 +20,7 @@ public final class PokeApi {
     }()
     
     public let session: URLSession
-    let decoder: JSONDecoder = {
+    public let decoder: JSONDecoder = {
         let decoder = JSONDecoder()
         return decoder
     }()
