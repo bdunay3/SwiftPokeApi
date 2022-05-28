@@ -1,6 +1,8 @@
 import Combine
 import Foundation
 
+// MARK: - Fetching Resources
+
 public extension PokeApi {
     func get<PokeApiData: Decodable>(_ type: PokeApiData.Type, request: URLRequest) -> AnyPublisher<PokeApiData, Error> {
         if request.cachePolicy == .returnCacheDataElseLoad,
@@ -18,11 +20,8 @@ public extension PokeApi {
     }
     
     func get<PokeApiData: Decodable>(_ type: PokeApiData.Type, at url: URL, cachePolicy: URLRequest.CachePolicy? = nil) -> AnyPublisher<PokeApiData, Error> {
-        var urlRequest = URLRequest(url: url)
-        urlRequest.httpMethod = "GET"
-        urlRequest.cachePolicy = cachePolicy ?? .returnCacheDataElseLoad
         
-        return get(type, request: urlRequest)
+        return get(type, request: urlGetRequest(for: url, cachePolicy: cachePolicy))
     }
     
     // MARK: Get By ID or Name
@@ -38,10 +37,9 @@ public extension PokeApi {
     // MARK: Get as Page of Resources
     
     func getPage<PokeApiData: ApiGetable>(of type: PokeApiData.Type, from startIndex: Int, limit: Int, cachePolicy: URLRequest.CachePolicy? = nil) -> AnyPublisher<NamedAPIResourceList<PokeApiData>, Error> {
-        var urlRequest = URLRequest(resource: PokeApiData.resource, startingAt: startIndex, itemsPerPage: limit)
-        urlRequest.cachePolicy = cachePolicy ?? .returnCacheDataElseLoad
         
-        return get(NamedAPIResourceList<PokeApiData>.self, request: urlRequest)
+        return get(NamedAPIResourceList<PokeApiData>.self,
+                   request: urlGetPageRequest(of: type, from: startIndex, limit: limit, cachePolicy: cachePolicy))
     }
     
     func getResourcesForPage<PokeApiData: ApiGetable>(of type: PokeApiData.Type, from startIndex: Int, limit: Int, cachePolicy: URLRequest.CachePolicy? = nil) -> AnyPublisher<PokeApiData, Error> {
@@ -52,11 +50,7 @@ public extension PokeApi {
             .eraseToAnyPublisher()
     }
     
-    private func processCachedResponse(_ cachedResponse: CachedURLResponse) throws -> Data {
-        return try processResponse(output: (data: cachedResponse.data, response: cachedResponse.response))
-    }
-    
-    private func processResponse(output: URLSession.DataTaskPublisher.Output) throws -> Data {
+    internal func processResponse(output: URLSession.DataTaskPublisher.Output) throws -> Data {
         guard let response = output.response as? HTTPURLResponse else {
             throw ApiError.invalidServerResponse
         }
