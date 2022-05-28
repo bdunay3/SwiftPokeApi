@@ -1,8 +1,8 @@
 import Foundation
 
 extension Locations {
-    public struct Regions: ApiGetable {
-        public static let resource: PokeApiResourceType = PokeApi.Resource.Locations.region
+    public struct Regions: PokeApiGetable {
+        public static let resource: PokeApiResourceType = PokeApiClient.Resource.Locations.region
         
         enum CodingKeys: String, CodingKey {
             case id, locations, name, names

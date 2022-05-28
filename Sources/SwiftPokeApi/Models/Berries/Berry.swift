@@ -1,8 +1,8 @@
 import Foundation
 
 extension Berries {
-    public struct Berry: ApiGetable {
-        public static var resource: PokeApiResourceType = PokeApi.Resource.Berries.berries
+    public struct Berry: PokeApiGetable {
+        public static var resource: PokeApiResourceType = PokeApiClient.Resource.Berries.berries
         
         public struct Map: Decodable {
             public let potency: Int

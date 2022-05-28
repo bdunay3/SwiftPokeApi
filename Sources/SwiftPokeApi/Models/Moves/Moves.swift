@@ -1,7 +1,7 @@
 import Foundation
 
-public struct Moves: ApiGetable {
-    public static let resource: PokeApiResourceType = PokeApi.Resource.Moves.moves
+public struct Moves: PokeApiGetable {
+    public static let resource: PokeApiResourceType = PokeApiClient.Resource.Moves.moves
     
     public struct ComboSets: Decodable {
         public let normal: ComboDetail

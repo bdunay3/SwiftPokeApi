@@ -3,7 +3,7 @@ import Foundation
 import SwiftPokeApi
 
 var cancellables = [AnyCancellable]()
-let api = PokeApi()
+let api = PokeApiClient()
 
 api.getResourcesForPage(of: Games.Pokedexes.self, from: 0, limit: 10)
     .sink {

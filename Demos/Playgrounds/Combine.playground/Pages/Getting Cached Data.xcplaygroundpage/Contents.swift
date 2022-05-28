@@ -3,7 +3,7 @@ import Foundation
 import SwiftPokeApi
 
 var cancellables = [AnyCancellable]()
-let api = PokeApi()
+let api = PokeApiClient()
 
 api.session.configuration.urlCache?.removeAllCachedResponses()
 

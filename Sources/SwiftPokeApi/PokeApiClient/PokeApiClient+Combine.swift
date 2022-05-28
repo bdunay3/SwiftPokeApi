@@ -3,7 +3,7 @@ import Foundation
 
 // MARK: - Fetching Resources
 
-public extension PokeApi {
+public extension PokeApiClient {
     func get<PokeApiData: Decodable>(_ type: PokeApiData.Type, request: URLRequest) -> AnyPublisher<PokeApiData, Error> {
         if request.cachePolicy == .returnCacheDataElseLoad,
             let cachedResponse = session.configuration.urlCache?.cachedResponse(for: request) {
@@ -26,23 +26,23 @@ public extension PokeApi {
     
     // MARK: - Get By ID or Name
     
-    func get<PokeApiData: ApiGetable>(_ type: PokeApiData.Type, byName name: String, cachePolicy: URLRequest.CachePolicy? = nil) -> AnyPublisher<PokeApiData, Error> {
+    func get<PokeApiData: PokeApiGetable>(_ type: PokeApiData.Type, byName name: String, cachePolicy: URLRequest.CachePolicy? = nil) -> AnyPublisher<PokeApiData, Error> {
         get(type, at: PokeApiData.resource.url(name: name))
     }
     
-    func get<PokeApiData: ApiGetable>(_ type: PokeApiData.Type, byId id: Int, cachePolicy: URLRequest.CachePolicy? = nil) -> AnyPublisher<PokeApiData, Error> {
+    func get<PokeApiData: PokeApiGetable>(_ type: PokeApiData.Type, byId id: Int, cachePolicy: URLRequest.CachePolicy? = nil) -> AnyPublisher<PokeApiData, Error> {
         get(type, at: PokeApiData.resource.url(id: id))
     }
     
     // MARK: - Get as Page of Resources
     
-    func getPage<PokeApiData: ApiGetable>(of type: PokeApiData.Type, from startIndex: Int, limit: Int, cachePolicy: URLRequest.CachePolicy? = nil) -> AnyPublisher<NamedAPIResourceList<PokeApiData>, Error> {
+    func getPage<PokeApiData: PokeApiGetable>(of type: PokeApiData.Type, from startIndex: Int, limit: Int, cachePolicy: URLRequest.CachePolicy? = nil) -> AnyPublisher<NamedAPIResourceList<PokeApiData>, Error> {
         
         return get(NamedAPIResourceList<PokeApiData>.self,
                    request: urlGetPageRequest(of: type, from: startIndex, limit: limit, cachePolicy: cachePolicy))
     }
     
-    func getResourcesForPage<PokeApiData: ApiGetable>(of type: PokeApiData.Type, from startIndex: Int, limit: Int, cachePolicy: URLRequest.CachePolicy? = nil) -> AnyPublisher<PokeApiData, Error> {
+    func getResourcesForPage<PokeApiData: PokeApiGetable>(of type: PokeApiData.Type, from startIndex: Int, limit: Int, cachePolicy: URLRequest.CachePolicy? = nil) -> AnyPublisher<PokeApiData, Error> {
         getPage(of: type, from: startIndex, limit: limit, cachePolicy: cachePolicy)
             .flatMap {
                 $0.itemsPublisher(using: self)

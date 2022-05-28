@@ -1,7 +1,7 @@
 import Foundation
 import SwiftPokeApi
 
-let api = PokeApi()
+let api = PokeApiClient()
 
 api.get(Pokemon.self, byId: 1) { result in
     switch result {

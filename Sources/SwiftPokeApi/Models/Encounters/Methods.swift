@@ -1,8 +1,8 @@
 import Foundation
 
 extension Encounters {
-    public struct Methods: ApiGetable {
-        public static let resource: PokeApiResourceType = PokeApi.Resource.Encounters.methods
+    public struct Methods: PokeApiGetable {
+        public static let resource: PokeApiResourceType = PokeApiClient.Resource.Encounters.methods
         
         public let id: Int
         public let name: String

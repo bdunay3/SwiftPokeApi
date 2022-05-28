@@ -1,8 +1,8 @@
 import Foundation
 
 extension Encounters {
-    public struct ConditionValues: ApiGetable {
-        public static let resource: PokeApiResourceType = PokeApi.Resource.Encounters.conditionValue
+    public struct ConditionValues: PokeApiGetable {
+        public static let resource: PokeApiResourceType = PokeApiClient.Resource.Encounters.conditionValue
         
         public let id: Int
         public let name: String

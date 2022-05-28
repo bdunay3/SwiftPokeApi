@@ -7,7 +7,7 @@ import Foundation
 import SwiftPokeApi
 
 var cancellables = [AnyCancellable]()
-let api = PokeApi()
+let api = PokeApiClient()
 
 api.get(Pokemon.self, byId: 1)
     .sink {

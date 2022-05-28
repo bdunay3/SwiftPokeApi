@@ -1,6 +1,6 @@
 import Foundation
 
-extension PokeApi {
+extension PokeApiClient {
     public enum Resource: String, PokeApiResourceType {
         public enum Berries: String, PokeApiResourceType {
             case berries = "berry"

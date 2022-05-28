@@ -1,7 +1,7 @@
 import Foundation
 import SwiftPokeApi
 
-let api = PokeApi()
+let api = PokeApiClient()
 var bag = [Pokemon]()
 var numberOfPokemonPerPage = 10
 

@@ -1,8 +1,8 @@
 import Foundation
 
 extension Pokemon {
-    public struct PokeathlonStats: ApiGetable {
-        public static var resource: PokeApiResourceType = PokeApi.Resource.Pokemon.pokeathlonStat
+    public struct PokeathlonStats: PokeApiGetable {
+        public static var resource: PokeApiResourceType = PokeApiClient.Resource.Pokemon.pokeathlonStat
         
         public struct NaturePokeathlonStatAffect: Decodable {
             enum CodingKeys: String, CodingKey {

@@ -1,8 +1,8 @@
 import Foundation
 
 extension Moves {
-    public struct Categories: ApiGetable {
-        public static let resource: PokeApiResourceType = PokeApi.Resource.Moves.categories
+    public struct Categories: PokeApiGetable {
+        public static let resource: PokeApiResourceType = PokeApiClient.Resource.Moves.categories
         
         public let id: Int
         public let name: String

@@ -1,8 +1,8 @@
 import Foundation
 
 extension Pokemon {
-    public struct Shapes: ApiGetable {
-        public static var resource: PokeApiResourceType = PokeApi.Resource.Pokemon.shape
+    public struct Shapes: PokeApiGetable {
+        public static var resource: PokeApiResourceType = PokeApiClient.Resource.Pokemon.shape
         
         public struct AwesomeName: Decodable {
             enum CodingKeys: String, CodingKey {

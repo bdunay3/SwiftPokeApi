@@ -1,8 +1,8 @@
 import Foundation
 
 extension Pokemon {
-    public struct Ability: ApiGetable {
-        public static var resource: PokeApiResourceType = PokeApi.Resource.Pokemon.abilities
+    public struct Ability: PokeApiGetable {
+        public static var resource: PokeApiResourceType = PokeApiClient.Resource.Pokemon.abilities
         
         public struct EffectChange: Decodable {
             public let effectEntries: [Effect]

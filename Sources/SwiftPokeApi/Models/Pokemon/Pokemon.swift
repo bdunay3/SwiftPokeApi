@@ -1,7 +1,7 @@
 import Foundation
 
-public struct Pokemon: ApiGetable {
-    public static let resource: PokeApiResourceType = PokeApi.Resource.pokemon
+public struct Pokemon: PokeApiGetable {
+    public static let resource: PokeApiResourceType = PokeApiClient.Resource.pokemon
     
     public struct Abilities: Decodable {
         public let ability: NamedAPIResource<Ability>

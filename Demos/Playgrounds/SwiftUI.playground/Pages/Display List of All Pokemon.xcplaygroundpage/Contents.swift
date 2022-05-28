@@ -15,10 +15,10 @@ final class Dexter: ObservableObject {
     @Published var error: Error?
     @Published var displayError = false
     
-    let api: PokeApi
+    let api: PokeApiClient
     private var cancellables = [AnyCancellable]()
     
-    init(api: PokeApi) {
+    init(api: PokeApiClient) {
         self.api = api
         
         subscribeToResourcePage()
@@ -113,7 +113,7 @@ struct PokemonListRow: View {
 }
 
 struct PokemonListView: View {
-    @StateObject var dex = Dexter(api: PokeApi())
+    @StateObject var dex = Dexter(api: PokeApiClient())
     
     var body: some View {
         if dex.pokemon.isEmpty {

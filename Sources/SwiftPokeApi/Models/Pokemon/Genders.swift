@@ -1,8 +1,8 @@
 import Foundation
 
 extension Pokemon {
-    public struct Genders: ApiGetable {
-        public static let resource: PokeApiResourceType = PokeApi.Resource.Pokemon.gender
+    public struct Genders: PokeApiGetable {
+        public static let resource: PokeApiResourceType = PokeApiClient.Resource.Pokemon.gender
         
         public struct SpeciesGender: Decodable {
             enum CodingKeys: String, CodingKey {

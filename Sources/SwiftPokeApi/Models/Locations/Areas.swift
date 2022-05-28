@@ -1,8 +1,8 @@
 import Foundation
 
 extension Locations {
-    public struct Areas: ApiGetable {
-        public static let resource: PokeApiResourceType = PokeApi.Resource.Locations.locationArea
+    public struct Areas: PokeApiGetable {
+        public static let resource: PokeApiResourceType = PokeApiClient.Resource.Locations.locationArea
         
         public struct EncounterMethodRate: Decodable {
             enum CodingKeys: String, CodingKey {

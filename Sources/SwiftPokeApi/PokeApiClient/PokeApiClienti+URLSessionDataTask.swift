@@ -1,8 +1,8 @@
 import Foundation
 
-public extension PokeApi {
+public extension PokeApiClient {
     typealias PokeApiResult<PokeApiData: Decodable> = (Result<PokeApiData, Error>) -> Void
-    typealias PokeApiPageResult<PokeApiData: ApiGetable> = (Result<NamedAPIResourceList<PokeApiData>, Error>) -> Void
+    typealias PokeApiPageResult<PokeApiData: PokeApiGetable> = (Result<NamedAPIResourceList<PokeApiData>, Error>) -> Void
     
     @discardableResult
     func get<PokeApiData: Decodable>(_ type: PokeApiData.Type,
@@ -50,7 +50,7 @@ public extension PokeApi {
     // MARK: - Get By ID or Name
     
     @discardableResult
-    func get<PokeApiData: ApiGetable>(_ type: PokeApiData.Type,
+    func get<PokeApiData: PokeApiGetable>(_ type: PokeApiData.Type,
                                       byName name: String,
                                       result: @escaping PokeApiResult<PokeApiData>) -> URLSessionDataTask {
         get(type,
@@ -59,7 +59,7 @@ public extension PokeApi {
     }
     
     @discardableResult
-    func get<PokeApiData: ApiGetable>(_ type: PokeApiData.Type,
+    func get<PokeApiData: PokeApiGetable>(_ type: PokeApiData.Type,
                                       byId id: Int,
                                       result: @escaping PokeApiResult<PokeApiData>) -> URLSessionDataTask {
         get(type,
@@ -70,7 +70,7 @@ public extension PokeApi {
     // MARK: - Get as Page of Resources
     
     @discardableResult
-    func getPage<PokeApiData: ApiGetable>(of type: PokeApiData.Type, from startIndex: Int, limit: Int, cachePolicy: URLRequest.CachePolicy? = nil, result: @escaping PokeApiPageResult<PokeApiData>) -> URLSessionDataTask {
+    func getPage<PokeApiData: PokeApiGetable>(of type: PokeApiData.Type, from startIndex: Int, limit: Int, cachePolicy: URLRequest.CachePolicy? = nil, result: @escaping PokeApiPageResult<PokeApiData>) -> URLSessionDataTask {
         
         get(NamedAPIResourceList<PokeApiData>.self,
             request: urlGetPageRequest(of: type,

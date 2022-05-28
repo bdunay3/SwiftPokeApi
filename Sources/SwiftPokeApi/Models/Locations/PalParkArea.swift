@@ -1,8 +1,8 @@
 import Foundation
 
 extension Locations {
-    public struct PalParkArea: ApiGetable {
-        public static let resource: PokeApiResourceType = PokeApi.Resource.Locations.palParkArea
+    public struct PalParkArea: PokeApiGetable {
+        public static let resource: PokeApiResourceType = PokeApiClient.Resource.Locations.palParkArea
         
         public struct EncounterSpecies: Decodable {
             enum CodingKeys: String, CodingKey {

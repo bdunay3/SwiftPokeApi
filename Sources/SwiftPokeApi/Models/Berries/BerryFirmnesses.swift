@@ -1,8 +1,8 @@
 import Foundation
 
 extension Berries {
-    public struct Firmnesses: ApiGetable {
-        public static var resource: PokeApiResourceType = PokeApi.Resource.Berries.firmnesses
+    public struct Firmnesses: PokeApiGetable {
+        public static var resource: PokeApiResourceType = PokeApiClient.Resource.Berries.firmnesses
         
         public let id: Int
         public let name: String

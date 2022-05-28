@@ -1,11 +1,12 @@
 import Combine
 import Foundation
+import SwiftPokeApi
 
 var cancellables = [AnyCancellable]()
-let api = PokeApi()
+let api = PokeApiClient()
 
 let formatter = DateFormatter()
-formatter.timeStyle = .full
+formatter.timeStyle = .medium
 
 print(formatter.string(from: .now))
 

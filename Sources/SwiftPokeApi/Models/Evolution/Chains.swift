@@ -1,8 +1,8 @@
 import Foundation
 
 public enum Evolution {
-    public struct Chains: ApiGetable {
-        public static let resource: PokeApiResourceType = PokeApi.Resource.Evolution.chains
+    public struct Chains: PokeApiGetable {
+        public static let resource: PokeApiResourceType = PokeApiClient.Resource.Evolution.chains
         
         public struct Link: Decodable {
             enum CodingKeys: String, CodingKey {

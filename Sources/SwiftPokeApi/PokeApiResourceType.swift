@@ -11,7 +11,7 @@ public protocol PokeApiResourceType {
 
 public extension PokeApiResourceType {
     var url: URL {
-        PokeApi.hostUrl.appendingPathComponent(rawValue)
+        PokeApiClient.hostUrl.appendingPathComponent(rawValue)
     }
     
     func url(name: String) -> URL {

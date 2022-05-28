@@ -13,13 +13,13 @@ extension NamedAPIResource: CustomStringConvertible {
 }
 
 extension NamedAPIResource {
-    public func itemPublisher(using api: PokeApi) -> AnyPublisher<T, Error> {
+    public func itemPublisher(using api: PokeApiClient) -> AnyPublisher<T, Error> {
         api.get(T.self, at: url)
             .eraseToAnyPublisher()
     }
 }
 
-public struct NamedAPIResourceList<T: ApiGetable>: Decodable {
+public struct NamedAPIResourceList<T: PokeApiGetable>: Decodable {
     public let count: Int
     public let next: URL?
     public let previous: URL?
@@ -27,7 +27,7 @@ public struct NamedAPIResourceList<T: ApiGetable>: Decodable {
 }
 
 extension NamedAPIResourceList {
-    public func itemsPublisher(using api: PokeApi) -> AnyPublisher<T, Error> {
+    public func itemsPublisher(using api: PokeApiClient) -> AnyPublisher<T, Error> {
         results.publisher
             .flatMap { $0.itemPublisher(using: api) }
             .eraseToAnyPublisher()

@@ -3,7 +3,7 @@ import Foundation
 import SwiftPokeApi
 
 var cancellables = [AnyCancellable]()
-let api = PokeApi()
+let api = PokeApiClient()
 
 api.getPage(of: Pokemon.self, from: 0, limit: 10)
     .flatMap(\.results.publisher)

@@ -1,5 +1,5 @@
 import Foundation
 
-public protocol ApiGetable: Decodable {
+public protocol PokeApiGetable: Decodable {
     static var resource: PokeApiResourceType { get }
 }

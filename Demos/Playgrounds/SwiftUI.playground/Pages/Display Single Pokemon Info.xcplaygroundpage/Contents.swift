@@ -6,7 +6,7 @@ import SwiftUI
 import PlaygroundSupport
 
 var cancellables = [AnyCancellable]()
-let api = PokeApi()
+let api = PokeApiClient()
 
 let nilablePokemonPublisher = api.get(Pokemon.self, byId: 3)
     .flatMap {

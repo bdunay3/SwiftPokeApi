@@ -1,8 +1,8 @@
 import Foundation
 
 extension Contests {
-    public struct Effects: ApiGetable {
-        public static let resource: PokeApiResourceType = PokeApi.Resource.Contests.effects
+    public struct Effects: PokeApiGetable {
+        public static let resource: PokeApiResourceType = PokeApiClient.Resource.Contests.effects
         
         enum CodingKeys: String, CodingKey {
             case id, appeal, jam

@@ -1,8 +1,8 @@
 import Foundation
 
 extension Pokemon {
-    public struct GrowthRates: ApiGetable {
-        public static var resource: PokeApiResourceType = PokeApi.Resource.Pokemon.growthRate
+    public struct GrowthRates: PokeApiGetable {
+        public static var resource: PokeApiResourceType = PokeApiClient.Resource.Pokemon.growthRate
         
         public struct ExperienceLevel: Decodable {
             public let level: Int
