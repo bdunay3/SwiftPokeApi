@@ -4,17 +4,17 @@ import Foundation
 // MARK: - Fetching Resources
 
 public extension PokeApiClient {
-    typealias Publisher<PokeApiData: Decodable> = AnyPublisher<PokeApiData, Error>
+    typealias Publisher<PokeApiData: PokeApiResource> = AnyPublisher<PokeApiData, Error>
     typealias PagePublisher<PokeApiData: ApiGetable> = AnyPublisher<NamedAPIResourceList<PokeApiData>, Error>
     
-    func get<PokeApiData: Decodable>(_ type: PokeApiData.Type, request: URLRequest) -> Publisher<PokeApiData> {
+    func get<PokeApiData: PokeApiResource>(_ type: PokeApiData.Type, request: URLRequest) -> Publisher<PokeApiData> {
         session.dataTaskPublisher(for: request)
             .tryMap(processDataTaskPublisherResponse(output:))
             .decode(type: PokeApiData.self, decoder: decoder)
             .eraseToAnyPublisher()
     }
     
-    func get<R: Decodable>(_ type: R.Type, at url: URL, cachePolicy: URLRequest.CachePolicy? = nil) -> Publisher<R> {
+    func get<R: PokeApiResource>(_ type: R.Type, at url: URL, cachePolicy: URLRequest.CachePolicy? = nil) -> Publisher<R> {
         
         return get(type, request: urlGetRequest(for: url, cachePolicy: cachePolicy))
     }
@@ -32,18 +32,18 @@ public extension PokeApiClient {
     // MARK: - Get as Page of Resources
     
     func getPage<R: ApiGetable>(of type: R.Type,
-                                    from startIndex: Int,
-                                    limit: Int,
-                                    cachePolicy: URLRequest.CachePolicy? = nil) -> PagePublisher<R> {
+                                from startIndex: Int,
+                                limit: Int,
+                                cachePolicy: URLRequest.CachePolicy? = nil) -> PagePublisher<R> {
         
         return get(NamedAPIResourceList<R>.self,
                    request: urlGetPageRequest(of: type, from: startIndex, limit: limit, cachePolicy: cachePolicy))
     }
     
     func getResourcesForPage<R: ApiGetable>(of type: R.Type,
-                                                from startIndex: Int,
-                                                limit: Int,
-                                                cachePolicy: URLRequest.CachePolicy? = nil) -> Publisher<R> {
+                                            from startIndex: Int,
+                                            limit: Int,
+                                            cachePolicy: URLRequest.CachePolicy? = nil) -> Publisher<R> {
         
         getPage(of: type, from: startIndex, limit: limit, cachePolicy: cachePolicy)
             .flatMap {

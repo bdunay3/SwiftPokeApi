@@ -18,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		873D8CAA28458960006004E8 /* Async_Await.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Async_Await.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		BE1ACD7B2842A7A60068BCD1 /* URLSession.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = URLSession.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		BE1ACD7C2842A8330068BCD1 /* SwiftUI.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = SwiftUI.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		BE1ACD7D2842A8AF0068BCD1 /* R&D Testing.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "R&D Testing.playground"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -105,6 +106,7 @@
 				BE1ACD7B2842A7A60068BCD1 /* URLSession.playground */,
 				BE1ACD7C2842A8330068BCD1 /* SwiftUI.playground */,
 				BE1ACD7D2842A8AF0068BCD1 /* R&D Testing.playground */,
+				873D8CAA28458960006004E8 /* Async_Await.playground */,
 			);
 			path = Playgrounds;
 			sourceTree = "<group>";
