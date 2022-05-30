@@ -1,7 +1,7 @@
 import Foundation
 
 public extension URLRequest {
-    init(resource: PokeApiResourceType, parameters: [URLQueryItem]) {
+    init(resource: ResourceType, parameters: [URLQueryItem]) {
         var components = URLComponents(url: resource.url, resolvingAgainstBaseURL: true)
         components?.queryItems = parameters
         
@@ -12,7 +12,7 @@ public extension URLRequest {
         self.init(url: requestUrl)
     }
     
-    init(resource: PokeApiResourceType, startingAt startIndex: Int, itemsPerPage limit: Int) {
+    init(resource: ResourceType, startingAt startIndex: Int, itemsPerPage limit: Int) {
         self.init(resource: resource, parameters: [
             URLQueryItem(name: "offset", value: "\(startIndex)"),
             URLQueryItem(name: "limit", value: "\(limit)")

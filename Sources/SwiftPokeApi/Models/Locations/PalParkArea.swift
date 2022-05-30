@@ -1,10 +1,10 @@
 import Foundation
 
 extension Locations {
-    public struct PalParkArea: PokeApiGetable {
-        public static let resource: PokeApiResourceType = PokeApiClient.Resource.Locations.palParkArea
+    public struct PalParkArea: ApiGetable {
+        public static let resource: ResourceType = PokeApiClient.Resource.Locations.palParkArea
         
-        public struct EncounterSpecies: Decodable {
+        public struct EncounterSpecies: PokeApiResource {
             enum CodingKeys: String, CodingKey {
                 case baseScore = "base_score"
                 case rate

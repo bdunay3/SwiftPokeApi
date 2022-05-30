@@ -18,15 +18,15 @@ public extension PokeApiClient {
         try getCachedResource(type, request: urlGetRequest(for: url, cachePolicy: cachePolicy))
     }
 
-    func getCachedResource<R: PokeApiGetable>(_ type: R.Type, id: Int, cachePolicy: URLRequest.CachePolicy? = nil) throws -> R? {
+    func getCachedResource<R: ApiGetable>(_ type: R.Type, id: Int, cachePolicy: URLRequest.CachePolicy? = nil) throws -> R? {
         try getCachedResource(type, request: urlGetRequest(for: type, id: id, cachePolicy: cachePolicy))
     }
 
-    func getCachedResource<R: PokeApiGetable>(_ type: R.Type, name: String, cachePolicy: URLRequest.CachePolicy? = nil) throws -> R? {
+    func getCachedResource<R: ApiGetable>(_ type: R.Type, name: String, cachePolicy: URLRequest.CachePolicy? = nil) throws -> R? {
         try getCachedResource(type, request: urlGetRequest(for: type, name: name, cachePolicy: cachePolicy))
     }
     
-    func getCachedPage<R: PokeApiGetable>(of type: R.Type,
+    func getCachedPage<R: ApiGetable>(of type: R.Type,
                                           from startIndex: Int,
                                           limit: Int,
                                           cachePolicy: URLRequest.CachePolicy? = nil) throws -> NamedAPIResourceList<R>? {

@@ -1,10 +1,10 @@
 import Foundation
 
 extension Pokemon {
-    public struct Shapes: PokeApiGetable {
-        public static var resource: PokeApiResourceType = PokeApiClient.Resource.Pokemon.shape
+    public struct Shapes: ApiGetable {
+        public static var resource: ResourceType = PokeApiClient.Resource.Pokemon.shape
         
-        public struct AwesomeName: Decodable {
+        public struct AwesomeName: PokeApiResource {
             enum CodingKeys: String, CodingKey {
                 case awesomeName = "awesome_name"
                 case language

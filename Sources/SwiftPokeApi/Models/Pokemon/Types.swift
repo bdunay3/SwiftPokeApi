@@ -1,15 +1,15 @@
 import Foundation
 
 extension Pokemon {
-    public struct Types: PokeApiGetable {
-        public static var resource: PokeApiResourceType = PokeApiClient.Resource.Pokemon.type
+    public struct Types: ApiGetable {
+        public static var resource: ResourceType = PokeApiClient.Resource.Pokemon.type
         
-        public struct TypePokemon: Decodable {
+        public struct TypePokemon: PokeApiResource {
             public let slot: Int
             public let pokemon: NamedAPIResource<Pokemon>
         }
         
-        public struct DamageRelations: Decodable {
+        public struct DamageRelations: PokeApiResource {
             enum CodingKeys: String, CodingKey {
                 case noDamageTo = "no_damage_to"
                 case halfDamageTo = "half_damage_to"
@@ -27,7 +27,7 @@ extension Pokemon {
             public let doubleDamageFrom: [NamedAPIResource<Types>]
         }
         
-        public struct RelationsPast: Decodable {
+        public struct RelationsPast: PokeApiResource {
             enum CodingKeys: String, CodingKey {
                 case generation
                 case damageRelations = "damage_relations"

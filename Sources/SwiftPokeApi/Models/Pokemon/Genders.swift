@@ -1,10 +1,10 @@
 import Foundation
 
 extension Pokemon {
-    public struct Genders: PokeApiGetable {
-        public static let resource: PokeApiResourceType = PokeApiClient.Resource.Pokemon.gender
+    public struct Genders: ApiGetable {
+        public static let resource: ResourceType = PokeApiClient.Resource.Pokemon.gender
         
-        public struct SpeciesGender: Decodable {
+        public struct SpeciesGender: PokeApiResource {
             enum CodingKeys: String, CodingKey {
                 case rate
                 case pokemonSpecies = "pokemon_species"

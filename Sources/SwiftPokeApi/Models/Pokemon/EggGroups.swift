@@ -1,8 +1,8 @@
 import Foundation
 
 extension Pokemon {
-    public struct EggGroups: PokeApiGetable {
-        public static var resource: PokeApiResourceType = PokeApiClient.Resource.Pokemon.eggGroup
+    public struct EggGroups: ApiGetable {
+        public static var resource: ResourceType = PokeApiClient.Resource.Pokemon.eggGroup
         
         public let id: Int
         public let name: String

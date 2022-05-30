@@ -1,10 +1,10 @@
 import Foundation
 
 extension Contests {
-    public struct Types: PokeApiGetable {
-        public static let resource: PokeApiResourceType = PokeApiClient.Resource.Contests.types
+    public struct Types: ApiGetable {
+        public static let resource: ResourceType = PokeApiClient.Resource.Contests.types
         
-        public struct ContestName: Decodable {
+        public struct ContestName: PokeApiResource {
             public let name: String
             public let color: String
             public let language: NamedAPIResource<Language>

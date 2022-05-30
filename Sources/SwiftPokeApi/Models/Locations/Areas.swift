@@ -1,10 +1,10 @@
 import Foundation
 
 extension Locations {
-    public struct Areas: PokeApiGetable {
-        public static let resource: PokeApiResourceType = PokeApiClient.Resource.Locations.locationArea
+    public struct Areas: ApiGetable {
+        public static let resource: ResourceType = PokeApiClient.Resource.Locations.locationArea
         
-        public struct EncounterMethodRate: Decodable {
+        public struct EncounterMethodRate: PokeApiResource {
             enum CodingKeys: String, CodingKey {
                 case encounterMethod = "encounter_method"
                 case versionDetails = "version_details"
@@ -14,12 +14,12 @@ extension Locations {
             public let versionDetails: [EncounterVersionDetails]
         }
 
-        public struct EncounterVersionDetails: Decodable {
+        public struct EncounterVersionDetails: PokeApiResource {
             public let rate: Int
             public let version: NamedAPIResource<Games.Version>
         }
 
-        public struct PokemonEncounter: Decodable {
+        public struct PokemonEncounter: PokeApiResource {
             enum CodingKeys: String, CodingKey {
                 case pokemon
                 case versionDetails = "version_details"

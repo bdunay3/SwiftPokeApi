@@ -1,10 +1,10 @@
 import Foundation
 
 extension Pokemon {
-    public struct Forms: PokeApiGetable {
-        public static var resource: PokeApiResourceType = PokeApiClient.Resource.Pokemon.forms
+    public struct Forms: ApiGetable {
+        public static var resource: ResourceType = PokeApiClient.Resource.Pokemon.forms
         
-        public struct Sprites: Decodable {
+        public struct Sprites: PokeApiResource {
             enum CodingKeys: String, CodingKey {
                 case frontDefault = "front_default"
                 case frontShiny = "front_shiny"

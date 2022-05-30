@@ -1,14 +1,14 @@
 import Foundation
 
-public struct Moves: PokeApiGetable {
-    public static let resource: PokeApiResourceType = PokeApiClient.Resource.Moves.moves
+public struct Moves: ApiGetable {
+    public static let resource: ResourceType = PokeApiClient.Resource.Moves.moves
     
-    public struct ComboSets: Decodable {
+    public struct ComboSets: PokeApiResource {
         public let normal: ComboDetail
         public let `super`: ComboDetail
     }
     
-    public struct ComboDetail: Decodable {
+    public struct ComboDetail: PokeApiResource {
         enum CodingKeys: String, CodingKey {
             case use_before = "use_before"
             case use_after = "use_after"
@@ -18,7 +18,7 @@ public struct Moves: PokeApiGetable {
         public let use_after: [NamedAPIResource<Moves>]?
     }
     
-    public struct FlavorText: Decodable {
+    public struct FlavorText: PokeApiResource {
         enum CodingKeys: String, CodingKey {
             case flavorText = "flavor_text"
             case language
@@ -30,7 +30,7 @@ public struct Moves: PokeApiGetable {
         public let versionGroup: NamedAPIResource<Games.VersionGroups>
     }
     
-    public struct MetaData: Decodable {
+    public struct MetaData: PokeApiResource {
         enum CodingKeys: String, CodingKey {
             case ailment, category
             case minHits = "min_hits"
@@ -58,12 +58,12 @@ public struct Moves: PokeApiGetable {
         public let statChance: Int
     }
     
-    public struct StatChange: Decodable {
+    public struct StatChange: PokeApiResource {
         public let change: Int
         public let stat: NamedAPIResource<Pokemon.Stat>
     }
     
-    public struct PastMoveStatValues: Decodable {
+    public struct PastMoveStatValues: PokeApiResource {
         enum CodingKeys: String, CodingKey {
             case accuracy
             case effectChance = "effect_chance"

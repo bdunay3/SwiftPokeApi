@@ -1,8 +1,8 @@
 import Foundation
 
 extension Pokemon {
-    public struct Habitats: PokeApiGetable {
-        public static var resource: PokeApiResourceType = PokeApiClient.Resource.Pokemon.habitats
+    public struct Habitats: ApiGetable {
+        public static var resource: ResourceType = PokeApiClient.Resource.Pokemon.habitats
         
         enum CodingKeys: String, CodingKey {
             case id, name, names

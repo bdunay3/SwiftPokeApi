@@ -1,8 +1,8 @@
 import Foundation
 
 extension Pokemon {
-    public struct Characteristics: PokeApiGetable {
-        public static var resource: PokeApiResourceType = PokeApiClient.Resource.Pokemon.characteristic
+    public struct Characteristics: ApiGetable {
+        public static var resource: ResourceType = PokeApiClient.Resource.Pokemon.characteristic
         
         public let id: Int
         public let geneModulo: Int

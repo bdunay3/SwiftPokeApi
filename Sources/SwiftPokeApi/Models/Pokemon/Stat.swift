@@ -1,20 +1,20 @@
 import Foundation
 
 extension Pokemon {
-    public struct Stat: PokeApiGetable {
-        public static var resource: PokeApiResourceType = PokeApiClient.Resource.Pokemon.stats
+    public struct Stat: ApiGetable {
+        public static var resource: ResourceType = PokeApiClient.Resource.Pokemon.stats
         
-        public struct MoveStatAffect: Decodable {
+        public struct MoveStatAffect: PokeApiResource {
             public let change: Int
             public let move: NamedAPIResource<Moves>
         }
         
-        public struct MoveStatAffectSets: Decodable {
+        public struct MoveStatAffectSets: PokeApiResource {
             public let increase: [MoveStatAffect]
             public let decrease: [MoveStatAffect]
         }
         
-        public struct NatureStatAffectSets: Decodable {
+        public struct NatureStatAffectSets: PokeApiResource {
             public let increase: [NamedAPIResource<Natures>]
             public let decrease: [NamedAPIResource<Natures>]
         }

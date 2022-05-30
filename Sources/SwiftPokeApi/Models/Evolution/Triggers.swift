@@ -1,8 +1,8 @@
 import Foundation
 
 extension Evolution {
-    public struct Triggers: PokeApiGetable {
-        public static let resource: PokeApiResourceType = PokeApiClient.Resource.Evolution.triggers
+    public struct Triggers: ApiGetable {
+        public static let resource: ResourceType = PokeApiClient.Resource.Evolution.triggers
         
         enum CodingKeys: String, CodingKey {
             case id, name, names

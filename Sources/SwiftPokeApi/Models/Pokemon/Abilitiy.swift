@@ -1,10 +1,10 @@
 import Foundation
 
 extension Pokemon {
-    public struct Ability: PokeApiGetable {
-        public static var resource: PokeApiResourceType = PokeApiClient.Resource.Pokemon.abilities
+    public struct Ability: ApiGetable {
+        public static var resource: ResourceType = PokeApiClient.Resource.Pokemon.abilities
         
-        public struct EffectChange: Decodable {
+        public struct EffectChange: PokeApiResource {
             public let effectEntries: [Effect]
             public let versionGroup: NamedAPIResource<Games.VersionGroups>
 
@@ -14,7 +14,7 @@ extension Pokemon {
             }
         }
         
-        public struct FlavorTextEntry: Decodable {
+        public struct FlavorTextEntry: PokeApiResource {
             public let flavorText: String
             public let language: NamedAPIResource<Language>
             public let versionGroup: NamedAPIResource<Games.VersionGroups>
@@ -26,7 +26,7 @@ extension Pokemon {
             }
         }
         
-        public struct Pokemon: Decodable {
+        public struct Pokemon: PokeApiResource {
             public let isHidden: Bool
             public let slot: Int
             public let pokemon: NamedAPIResource<Pokemon>

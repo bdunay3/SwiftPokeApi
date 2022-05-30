@@ -1,8 +1,8 @@
 import Foundation
 
 extension Contests {
-    public struct SuperEffects: PokeApiGetable {
-        public static let resource: PokeApiResourceType = PokeApiClient.Resource.Contests.superEffects
+    public struct SuperEffects: ApiGetable {
+        public static let resource: ResourceType = PokeApiClient.Resource.Contests.superEffects
         
         enum CodingKeys: String, CodingKey {
             case id, appeal

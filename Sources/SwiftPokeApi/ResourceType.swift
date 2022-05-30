@@ -1,6 +1,6 @@
 import Foundation
 
-public protocol PokeApiResourceType {
+public protocol ResourceType {
     var rawValue: String { get }
     var url: URL { get }
     var canFetchByName: Bool { get }
@@ -9,7 +9,7 @@ public protocol PokeApiResourceType {
     func url(id: Int) -> URL
 }
 
-public extension PokeApiResourceType {
+public extension ResourceType {
     var url: URL {
         PokeApiClient.hostUrl.appendingPathComponent(rawValue)
     }

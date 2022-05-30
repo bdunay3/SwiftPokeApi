@@ -1,8 +1,8 @@
 import Foundation
 
 extension Moves {
-    public struct BattleStyles: PokeApiGetable {
-        public static let resource: PokeApiResourceType = PokeApiClient.Resource.Moves.battleStyle
+    public struct BattleStyles: ApiGetable {
+        public static let resource: ResourceType = PokeApiClient.Resource.Moves.battleStyle
         
         public let id: Int
         public let name: String

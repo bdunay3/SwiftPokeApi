@@ -1,10 +1,10 @@
 import Foundation
 
 extension Games {
-    public struct Pokedexes: PokeApiGetable {
-        public static var resource: PokeApiResourceType = PokeApiClient.Resource.Games.pokedexes
+    public struct Pokedexes: ApiGetable {
+        public static var resource: ResourceType = PokeApiClient.Resource.Games.pokedexes
         
-        public struct PokemonEntry: Decodable {
+        public struct PokemonEntry: PokeApiResource {
             enum CodingKeys: String, CodingKey {
                 case entryNumber = "entry_number"
                 case pokemonSpecies = "pokemon_species"

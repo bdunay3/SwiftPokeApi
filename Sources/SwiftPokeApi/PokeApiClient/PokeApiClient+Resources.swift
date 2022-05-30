@@ -1,8 +1,8 @@
 import Foundation
 
 extension PokeApiClient {
-    public enum Resource: String, PokeApiResourceType {
-        public enum Berries: String, PokeApiResourceType {
+    public enum Resource: String, ResourceType {
+        public enum Berries: String, ResourceType {
             case berries = "berry"
             case firmnesses = "berry-firmness"
             case flavors = "berry-flavor"
@@ -10,7 +10,7 @@ extension PokeApiClient {
             public var canFetchByName: Bool { true }
         }
         
-        public enum Contests: String, PokeApiResourceType {
+        public enum Contests: String, ResourceType {
             case types = "contest-type"
             case effects = "contest-effect"
             case superEffects = "super-contest-effect"
@@ -25,7 +25,7 @@ extension PokeApiClient {
             }
         }
         
-        public enum Encounters: String, PokeApiResourceType {
+        public enum Encounters: String, ResourceType {
             case methods = "encounter-method"
             case condition = "encounter-condition"
             case conditionValue = "encounter-condition-value"
@@ -33,7 +33,7 @@ extension PokeApiClient {
             public var canFetchByName: Bool { true }
         }
         
-        public enum Evolution: String, PokeApiResourceType {
+        public enum Evolution: String, ResourceType {
             case chains = "evolution-chain"
             case triggers = "evolution-trigger"
             
@@ -60,7 +60,7 @@ extension PokeApiClient {
             }
         }
         
-        public enum Games: String, PokeApiResourceType {
+        public enum Games: String, ResourceType {
             case generations = "generation"
             case pokedexes = "pokedex"
             case version = "version"
@@ -69,7 +69,7 @@ extension PokeApiClient {
             public var canFetchByName: Bool { true }
         }
         
-        public enum Items: String, PokeApiResourceType {
+        public enum Items: String, ResourceType {
             case attributes = "item-attribute"
             case categories = "item-category"
             case flingEffects = "item-fling-effect"
@@ -79,7 +79,7 @@ extension PokeApiClient {
             public var canFetchByName: Bool { true }
         }
         
-        public enum Locations: String, PokeApiResourceType {
+        public enum Locations: String, ResourceType {
             case location = "location"
             case locationArea = "location-area"
             case palParkArea = "pal-park-area"
@@ -88,7 +88,7 @@ extension PokeApiClient {
             public var canFetchByName: Bool { true }
         }
         
-        public enum Moves: String, PokeApiResourceType {
+        public enum Moves: String, ResourceType {
             case ailments = "move-ailment"
             case battleStyle = "move-battle-style"
             case categories = "move-category"
@@ -100,7 +100,7 @@ extension PokeApiClient {
             public var canFetchByName: Bool { true }
         }
         
-        public enum Pokemon: String, PokeApiResourceType {
+        public enum Pokemon: String, ResourceType {
             case abilities = "ability"
             case characteristic = "characteristic"
             case eggGroup = "egg-group"

@@ -1,8 +1,8 @@
 import Foundation
 
 extension Items {
-    public struct Attributes: PokeApiGetable {
-        public static var resource: PokeApiResourceType = PokeApiClient.Resource.Items.attributes
+    public struct Attributes: ApiGetable {
+        public static var resource: ResourceType = PokeApiClient.Resource.Items.attributes
         
         public let id: Int
         public let name: String

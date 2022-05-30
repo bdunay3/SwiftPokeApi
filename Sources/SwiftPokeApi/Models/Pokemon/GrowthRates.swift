@@ -1,10 +1,10 @@
 import Foundation
 
 extension Pokemon {
-    public struct GrowthRates: PokeApiGetable {
-        public static var resource: PokeApiResourceType = PokeApiClient.Resource.Pokemon.growthRate
+    public struct GrowthRates: ApiGetable {
+        public static var resource: ResourceType = PokeApiClient.Resource.Pokemon.growthRate
         
-        public struct ExperienceLevel: Decodable {
+        public struct ExperienceLevel: PokeApiResource {
             public let level: Int
             public let experience: Int
         }

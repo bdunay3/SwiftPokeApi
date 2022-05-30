@@ -1,8 +1,8 @@
 import Foundation
 
 extension Moves {
-    public struct Targets: PokeApiGetable {
-        public static let resource: PokeApiResourceType = PokeApiClient.Resource.Moves.target
+    public struct Targets: ApiGetable {
+        public static let resource: ResourceType = PokeApiClient.Resource.Moves.target
         
         public let id: Int
         public let name: String

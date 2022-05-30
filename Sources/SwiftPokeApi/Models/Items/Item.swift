@@ -1,19 +1,19 @@
 import Foundation
 
 extension Items {
-    public struct Item: PokeApiGetable {
-        public static var resource: PokeApiResourceType = PokeApiClient.Resource.Items.item
+    public struct Item: ApiGetable {
+        public static var resource: ResourceType = PokeApiClient.Resource.Items.item
         
-        public struct ItemSprites: Decodable {
+        public struct ItemSprites: PokeApiResource {
             public let `default`: String
         }
         
-        public struct HolderPokemon: Decodable {
+        public struct HolderPokemon: PokeApiResource {
             public let pokemon: NamedAPIResource<Pokemon>
             public let version_details: [HolderPokemonVersionDetail]
         }
         
-        public struct HolderPokemonVersionDetail: Decodable {
+        public struct HolderPokemonVersionDetail: PokeApiResource {
             public let rarity: Int
             public let version: NamedAPIResource<Games.Version>
         }

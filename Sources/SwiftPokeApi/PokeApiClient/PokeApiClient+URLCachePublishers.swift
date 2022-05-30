@@ -22,15 +22,15 @@ public extension PokeApiClient {
         getCachedResourcePublisher(type, request: urlGetRequest(for: url, cachePolicy: cachePolicy))
     }
     
-    func getCachedResourcePublisher<PokeApiData: PokeApiGetable>(_ type: PokeApiData.Type, id: Int, cachePolicy: URLRequest.CachePolicy? = nil) -> AnyPublisher<PokeApiData, Error> {
+    func getCachedResourcePublisher<PokeApiData: ApiGetable>(_ type: PokeApiData.Type, id: Int, cachePolicy: URLRequest.CachePolicy? = nil) -> AnyPublisher<PokeApiData, Error> {
         getCachedResourcePublisher(type, request: urlGetRequest(for: type, id: id, cachePolicy: cachePolicy))
     }
     
-    func getCachedResourcePublisher<PokeApiData: PokeApiGetable>(_ type: PokeApiData.Type, name: String, cachePolicy: URLRequest.CachePolicy? = nil) -> AnyPublisher<PokeApiData, Error> {
+    func getCachedResourcePublisher<PokeApiData: ApiGetable>(_ type: PokeApiData.Type, name: String, cachePolicy: URLRequest.CachePolicy? = nil) -> AnyPublisher<PokeApiData, Error> {
         getCachedResourcePublisher(type, request: urlGetRequest(for: type, name: name, cachePolicy: cachePolicy))
     }
     
     internal func processCachedResponse(_ cachedResponse: CachedURLResponse) throws -> Data {
-        return try processResponse(output: (data: cachedResponse.data, response: cachedResponse.response))
+        return try processDataTaskPublisherResponse(output: (data: cachedResponse.data, response: cachedResponse.response))
     }
 }

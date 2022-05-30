@@ -1,7 +1,7 @@
 import Foundation
 import Combine
 
-public struct NamedAPIResource<T: Decodable>: Decodable {
+public struct NamedAPIResource<T: PokeApiResource>: PokeApiResource {
     public let name: String
     public let url: URL
 }
@@ -19,7 +19,7 @@ extension NamedAPIResource {
     }
 }
 
-public struct NamedAPIResourceList<T: PokeApiGetable>: Decodable {
+public struct NamedAPIResourceList<T: ApiGetable>: PokeApiResource {
     public let count: Int
     public let next: URL?
     public let previous: URL?

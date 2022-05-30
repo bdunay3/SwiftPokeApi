@@ -1,8 +1,8 @@
 import Foundation
 
 extension Items {
-    public struct FlingEffects: PokeApiGetable {
-        public static var resource: PokeApiResourceType = PokeApiClient.Resource.Items.flingEffects
+    public struct FlingEffects: ApiGetable {
+        public static var resource: ResourceType = PokeApiClient.Resource.Items.flingEffects
         
         enum CodingKeys: String, CodingKey {
             case id, name

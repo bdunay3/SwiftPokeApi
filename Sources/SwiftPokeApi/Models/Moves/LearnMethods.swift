@@ -1,8 +1,8 @@
 import Foundation
 
 extension Moves {
-    public struct LearnMethods: PokeApiGetable {
-        public static let resource: PokeApiResourceType = PokeApiClient.Resource.Moves.learnMethods
+    public struct LearnMethods: ApiGetable {
+        public static let resource: ResourceType = PokeApiClient.Resource.Moves.learnMethods
         
         enum CodingKeys: String, CodingKey {
             case id, name, descriptions, names

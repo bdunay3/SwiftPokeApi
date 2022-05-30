@@ -1,20 +1,20 @@
 import Foundation
 
-public struct APIResource: Decodable {
+public struct APIResource: PokeApiResource {
     public let url: URL
 }
 
-public struct Description: Decodable {
+public struct Description: PokeApiResource {
     public let description: String
     public let language: NamedAPIResource<Language>
 }
 
-public struct Effect: Decodable {
+public struct Effect: PokeApiResource {
     public let effect: String
     public let language: NamedAPIResource<Language>
 }
 
-public struct Encounter: Decodable {
+public struct Encounter: PokeApiResource {
     enum CodingKeys: String, CodingKey {
         case minLevel = "min_level"
         case maxLevel = "max_level"
@@ -29,7 +29,7 @@ public struct Encounter: Decodable {
     public let method: NamedAPIResource<Encounters.Methods>
 }
 
-public struct FlavorText: Decodable {
+public struct FlavorText: PokeApiResource {
     enum CodingKeys: String, CodingKey {
         case flavorText = "flavor_text"
         case language, version
@@ -40,7 +40,7 @@ public struct FlavorText: Decodable {
     public let version: NamedAPIResource<Games.Version>?
 }
 
-public struct GenerationGameIndex: Decodable {
+public struct GenerationGameIndex: PokeApiResource {
     enum CodingKeys: String, CodingKey {
         case gameIndex = "game_index"
         case generation
@@ -50,7 +50,7 @@ public struct GenerationGameIndex: Decodable {
     public let generation: NamedAPIResource<Games.Generations>
 }
 
-public struct MachineVersionDetail: Decodable {
+public struct MachineVersionDetail: PokeApiResource {
     enum CodingKeys: String, CodingKey {
         case machine
         case versionGroup = "version_group"
@@ -60,12 +60,12 @@ public struct MachineVersionDetail: Decodable {
     public let versionGroup: NamedAPIResource<Games.VersionGroups>
 }
 
-public struct Name: Decodable {
+public struct Name: PokeApiResource {
     public let name: String
     public let language: NamedAPIResource<Language>
 }
 
-public struct VerboseEffect: Decodable {
+public struct VerboseEffect: PokeApiResource {
     enum CodingKeys: String, CodingKey {
         case effect
         case shortEffect = "short_effect"
@@ -77,7 +77,7 @@ public struct VerboseEffect: Decodable {
     public let language: NamedAPIResource<Language>
 }
 
-public struct VersionEncounterDetail: Decodable {
+public struct VersionEncounterDetail: PokeApiResource {
     enum CodingKeys: String, CodingKey {
         case version
         case maxChance = "max_chance"
@@ -89,7 +89,7 @@ public struct VersionEncounterDetail: Decodable {
     public let encounterDetails: [Encounter]
 }
 
-public struct VersionGameIndex: Decodable {
+public struct VersionGameIndex: PokeApiResource {
     enum CodingKeys: String, CodingKey {
         case gameIndex = "game_index"
         case version
@@ -99,7 +99,7 @@ public struct VersionGameIndex: Decodable {
     public let version: NamedAPIResource<Games.Version>
 }
 
-public struct VersionGroupFlavorText: Decodable {
+public struct VersionGroupFlavorText: PokeApiResource {
     enum CodingKeys: String, CodingKey {
         case text
         case language

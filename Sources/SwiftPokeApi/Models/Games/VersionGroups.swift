@@ -1,8 +1,8 @@
 import Foundation
 
 extension Games {
-    public struct VersionGroups: PokeApiGetable {
-        public static var resource: PokeApiResourceType = PokeApiClient.Resource.Games.versionGroup
+    public struct VersionGroups: ApiGetable {
+        public static var resource: ResourceType = PokeApiClient.Resource.Games.versionGroup
         
         enum CodingKeys: String, CodingKey {
             case id, name, order, generation

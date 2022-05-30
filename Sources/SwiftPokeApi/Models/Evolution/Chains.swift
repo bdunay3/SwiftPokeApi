@@ -1,10 +1,10 @@
 import Foundation
 
 public enum Evolution {
-    public struct Chains: PokeApiGetable {
-        public static let resource: PokeApiResourceType = PokeApiClient.Resource.Evolution.chains
+    public struct Chains: ApiGetable {
+        public static let resource: ResourceType = PokeApiClient.Resource.Evolution.chains
         
-        public struct Link: Decodable {
+        public struct Link: PokeApiResource {
             enum CodingKeys: String, CodingKey {
                 case isBaby = "is_baby"
                 case species
@@ -18,7 +18,7 @@ public enum Evolution {
             public let evolvesTo: [Link]
         }
         
-        public struct EvolutionDetail: Decodable {
+        public struct EvolutionDetail: PokeApiResource {
             enum CodingKeys: String, CodingKey {
                 case item, trigger, gender
                 case heldItem = "held_item"

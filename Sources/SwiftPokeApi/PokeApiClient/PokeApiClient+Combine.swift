@@ -5,11 +5,11 @@ import Foundation
 
 public extension PokeApiClient {
     typealias Publisher<PokeApiData: Decodable> = AnyPublisher<PokeApiData, Error>
-    typealias PagePublisher<PokeApiData: PokeApiGetable> = AnyPublisher<NamedAPIResourceList<PokeApiData>, Error>
+    typealias PagePublisher<PokeApiData: ApiGetable> = AnyPublisher<NamedAPIResourceList<PokeApiData>, Error>
     
     func get<PokeApiData: Decodable>(_ type: PokeApiData.Type, request: URLRequest) -> Publisher<PokeApiData> {
         session.dataTaskPublisher(for: request)
-            .tryMap(processResponse(output:))
+            .tryMap(processDataTaskPublisherResponse(output:))
             .decode(type: PokeApiData.self, decoder: decoder)
             .eraseToAnyPublisher()
     }
@@ -21,17 +21,17 @@ public extension PokeApiClient {
     
     // MARK: - Get By ID or Name
     
-    func get<R: PokeApiGetable>(_ type: R.Type, byName name: String, cachePolicy: URLRequest.CachePolicy? = nil) -> Publisher<R> {
+    func get<R: ApiGetable>(_ type: R.Type, byName name: String, cachePolicy: URLRequest.CachePolicy? = nil) -> Publisher<R> {
         get(type, at: R.resource.url(name: name))
     }
     
-    func get<R: PokeApiGetable>(_ type: R.Type, byId id: Int, cachePolicy: URLRequest.CachePolicy? = nil) -> Publisher<R> {
+    func get<R: ApiGetable>(_ type: R.Type, byId id: Int, cachePolicy: URLRequest.CachePolicy? = nil) -> Publisher<R> {
         get(type, at: R.resource.url(id: id))
     }
     
     // MARK: - Get as Page of Resources
     
-    func getPage<R: PokeApiGetable>(of type: R.Type,
+    func getPage<R: ApiGetable>(of type: R.Type,
                                     from startIndex: Int,
                                     limit: Int,
                                     cachePolicy: URLRequest.CachePolicy? = nil) -> PagePublisher<R> {
@@ -40,7 +40,7 @@ public extension PokeApiClient {
                    request: urlGetPageRequest(of: type, from: startIndex, limit: limit, cachePolicy: cachePolicy))
     }
     
-    func getResourcesForPage<R: PokeApiGetable>(of type: R.Type,
+    func getResourcesForPage<R: ApiGetable>(of type: R.Type,
                                                 from startIndex: Int,
                                                 limit: Int,
                                                 cachePolicy: URLRequest.CachePolicy? = nil) -> Publisher<R> {
@@ -54,7 +54,7 @@ public extension PokeApiClient {
     
     // MARK: - Error Processing
     
-    internal func processResponse(output: URLSession.DataTaskPublisher.Output) throws -> Data {
+    internal func processDataTaskPublisherResponse(output: URLSession.DataTaskPublisher.Output) throws -> Data {
         guard let response = output.response as? HTTPURLResponse else {
             throw ApiError.invalidServerResponse
         }

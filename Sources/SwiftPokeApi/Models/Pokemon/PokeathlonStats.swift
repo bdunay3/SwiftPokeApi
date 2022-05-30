@@ -1,10 +1,10 @@
 import Foundation
 
 extension Pokemon {
-    public struct PokeathlonStats: PokeApiGetable {
-        public static var resource: PokeApiResourceType = PokeApiClient.Resource.Pokemon.pokeathlonStat
+    public struct PokeathlonStats: ApiGetable {
+        public static var resource: ResourceType = PokeApiClient.Resource.Pokemon.pokeathlonStat
         
-        public struct NaturePokeathlonStatAffect: Decodable {
+        public struct NaturePokeathlonStatAffect: PokeApiResource {
             enum CodingKeys: String, CodingKey {
                 case max_change = "max_change"
                 case nature
@@ -14,7 +14,7 @@ extension Pokemon {
             public let nature: NamedAPIResource<Natures>
         }
         
-        public struct NaturePokeathlonStatAffectSets: Decodable {
+        public struct NaturePokeathlonStatAffectSets: PokeApiResource {
             public let increase: [NaturePokeathlonStatAffect]
             public let decrease: [NaturePokeathlonStatAffect]
         }

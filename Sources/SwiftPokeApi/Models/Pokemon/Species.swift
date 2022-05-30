@@ -1,15 +1,15 @@
 import Foundation
 
 extension Pokemon {
-    public struct Species: PokeApiGetable {
-        public static var resource: PokeApiResourceType = PokeApiClient.Resource.Pokemon.species
+    public struct Species: ApiGetable {
+        public static var resource: ResourceType = PokeApiClient.Resource.Pokemon.species
         
-        public struct Genus: Decodable {
+        public struct Genus: PokeApiResource {
             public let genus: String
             public let language: NamedAPIResource<Language>
         }
         
-        public struct SpeciesDexEntry: Decodable {
+        public struct SpeciesDexEntry: PokeApiResource {
             enum CodingKeys: String, CodingKey {
                 case entryNumber = "entry_number"
                 case pokedex
@@ -19,7 +19,7 @@ extension Pokemon {
             public let pokedex: NamedAPIResource<Games.Pokedexes>
         }
         
-        public struct PalParkEncounterArea: Decodable {
+        public struct PalParkEncounterArea: PokeApiResource {
             enum CodingKeys: String, CodingKey {
                 case baseScore = "base_score"
                 case rate, area
@@ -30,7 +30,7 @@ extension Pokemon {
             public let area: NamedAPIResource<Locations.PalParkArea>
         }
         
-        public struct SpeciesVariety: Decodable {
+        public struct SpeciesVariety: PokeApiResource {
             enum CodingKeys: String, CodingKey {
                 case isDefault = "is_default"
                 case pokemon
