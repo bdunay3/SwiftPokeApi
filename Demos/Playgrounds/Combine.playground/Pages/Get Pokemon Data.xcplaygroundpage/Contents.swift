@@ -4,7 +4,8 @@
 
 import Combine
 import Foundation
-import SwiftPokeApi
+import PokeApi
+import PokeApiCombine
 
 var cancellables = [AnyCancellable]()
 let api = PokeApiClient()

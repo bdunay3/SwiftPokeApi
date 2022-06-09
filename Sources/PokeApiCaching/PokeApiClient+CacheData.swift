@@ -1,4 +1,5 @@
 import Foundation
+import PokeApi
 
 public extension PokeApiClient {
     func getCachedResource<R: Decodable>(_ type: R.Type, request: URLRequest) throws -> R? {
@@ -10,7 +11,7 @@ public extension PokeApiClient {
         do {
             return try decoder.decode(type, from: cachedResponse.data)
         } catch {
-            throw ApiError.jsonDecodeError(error)
+            throw PokeApiError.jsonDecodeError(error)
         }
     }
     

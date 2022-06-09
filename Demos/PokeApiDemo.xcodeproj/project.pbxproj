@@ -13,8 +13,11 @@
 		BE37437F2842A58F005B9253 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE37436D2842A58E005B9253 /* ContentView.swift */; };
 		BE3743802842A58F005B9253 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE37436E2842A58F005B9253 /* Assets.xcassets */; };
 		BE3743812842A58F005B9253 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE37436E2842A58F005B9253 /* Assets.xcassets */; };
-		BE37438F2842A5F7005B9253 /* SwiftPokeApi in Frameworks */ = {isa = PBXBuildFile; productRef = BE37438E2842A5F7005B9253 /* SwiftPokeApi */; };
-		BE3743912842A5FD005B9253 /* SwiftPokeApi in Frameworks */ = {isa = PBXBuildFile; productRef = BE3743902842A5FD005B9253 /* SwiftPokeApi */; };
+		BE69A81528525DF50044C4F1 /* PokeApi in Frameworks */ = {isa = PBXBuildFile; productRef = BE69A81428525DF50044C4F1 /* PokeApi */; };
+		BE69A81728525DF50044C4F1 /* PokeApiAsync in Frameworks */ = {isa = PBXBuildFile; productRef = BE69A81628525DF50044C4F1 /* PokeApiAsync */; };
+		BE69A81928525DF50044C4F1 /* PokeApiCaching in Frameworks */ = {isa = PBXBuildFile; productRef = BE69A81828525DF50044C4F1 /* PokeApiCaching */; };
+		BE69A81B28525DF50044C4F1 /* PokeApiCombine in Frameworks */ = {isa = PBXBuildFile; productRef = BE69A81A28525DF50044C4F1 /* PokeApiCombine */; };
+		BE69A81D28525DF50044C4F1 /* PokiApiDataTask in Frameworks */ = {isa = PBXBuildFile; productRef = BE69A81C28525DF50044C4F1 /* PokiApiDataTask */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +33,7 @@
 		BE37437B2842A58F005B9253 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		BE37438B2842A5CF005B9253 /* SwiftPokeApi */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SwiftPokeApi; path = ..; sourceTree = "<group>"; };
 		BE3743962842A6FB005B9253 /* Combine.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Combine.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		BE69A81328525DEE0044C4F1 /* PokeApiDemo--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "PokeApiDemo--iOS--Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,7 +41,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE37438F2842A5F7005B9253 /* SwiftPokeApi in Frameworks */,
+				BE69A81B28525DF50044C4F1 /* PokeApiCombine in Frameworks */,
+				BE69A81528525DF50044C4F1 /* PokeApi in Frameworks */,
+				BE69A81728525DF50044C4F1 /* PokeApiAsync in Frameworks */,
+				BE69A81D28525DF50044C4F1 /* PokiApiDataTask in Frameworks */,
+				BE69A81928525DF50044C4F1 /* PokeApiCaching in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -45,7 +53,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE3743912842A5FD005B9253 /* SwiftPokeApi in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,6 +62,7 @@
 		BE3743662842A58E005B9253 = {
 			isa = PBXGroup;
 			children = (
+				BE69A81328525DEE0044C4F1 /* PokeApiDemo--iOS--Info.plist */,
 				BE37438C2842A5E2005B9253 /* Playgrounds */,
 				BE37438A2842A5CF005B9253 /* Packages */,
 				BE37436B2842A58E005B9253 /* Shared */,
@@ -135,7 +143,11 @@
 			);
 			name = "PokeApiDemo (iOS)";
 			packageProductDependencies = (
-				BE37438E2842A5F7005B9253 /* SwiftPokeApi */,
+				BE69A81428525DF50044C4F1 /* PokeApi */,
+				BE69A81628525DF50044C4F1 /* PokeApiAsync */,
+				BE69A81828525DF50044C4F1 /* PokeApiCaching */,
+				BE69A81A28525DF50044C4F1 /* PokeApiCombine */,
+				BE69A81C28525DF50044C4F1 /* PokiApiDataTask */,
 			);
 			productName = "PokeApiDemo (iOS)";
 			productReference = BE3743732842A58F005B9253 /* PokeApiDemo.app */;
@@ -155,7 +167,6 @@
 			);
 			name = "PokeApiDemo (macOS)";
 			packageProductDependencies = (
-				BE3743902842A5FD005B9253 /* SwiftPokeApi */,
 			);
 			productName = "PokeApiDemo (macOS)";
 			productReference = BE3743792842A58F005B9253 /* PokeApiDemo.app */;
@@ -362,6 +373,7 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "PokeApiDemo--iOS--Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -393,6 +405,7 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "PokeApiDemo--iOS--Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -500,13 +513,25 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		BE37438E2842A5F7005B9253 /* SwiftPokeApi */ = {
+		BE69A81428525DF50044C4F1 /* PokeApi */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = SwiftPokeApi;
+			productName = PokeApi;
 		};
-		BE3743902842A5FD005B9253 /* SwiftPokeApi */ = {
+		BE69A81628525DF50044C4F1 /* PokeApiAsync */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = SwiftPokeApi;
+			productName = PokeApiAsync;
+		};
+		BE69A81828525DF50044C4F1 /* PokeApiCaching */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PokeApiCaching;
+		};
+		BE69A81A28525DF50044C4F1 /* PokeApiCombine */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PokeApiCombine;
+		};
+		BE69A81C28525DF50044C4F1 /* PokiApiDataTask */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PokiApiDataTask;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

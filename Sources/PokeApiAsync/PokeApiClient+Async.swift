@@ -1,11 +1,12 @@
 import Foundation
+import PokeApi
 
 @available(macOS 12.0, iOS 15.0, watchOS 8.0, tvOS 15.0, *)
 public extension PokeApiClient {
     func get<PokeApiData: Decodable>(_ type: PokeApiData.Type, request: URLRequest) async throws -> PokeApiData {
         let (data, response) = try await session.data(for: request)
         guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-            throw ApiError.invalidServerResponse
+            throw PokeApiError.invalidServerResponse
         }
         
         return try decoder.decode(type, from: data)

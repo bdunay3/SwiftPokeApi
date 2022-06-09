@@ -1,5 +1,5 @@
 import XCTest
-@testable import SwiftPokeApi
+@testable import PokeApi
 
 final class SwiftPokeApiTests: XCTestCase {
     func testExample() throws {

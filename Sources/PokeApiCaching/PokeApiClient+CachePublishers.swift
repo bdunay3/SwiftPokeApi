@@ -1,5 +1,6 @@
 import Combine
 import Foundation
+import PokeApi
 
 public extension PokeApiClient {
     func getCachedResourcePublisher<PokeApiData: Decodable>(_ type: PokeApiData.Type, request: URLRequest) -> AnyPublisher<PokeApiData, Error> {
@@ -10,7 +11,7 @@ public extension PokeApiClient {
             }
         }
         .tryMap {
-            guard let cachedResponse = $0 else { throw ApiError.requestNotCached }
+            guard let cachedResponse = $0 else { throw PokeApiError.requestNotCached }
             return cachedResponse
         }
         .tryMap(processCachedResponse(_:))
@@ -31,6 +32,10 @@ public extension PokeApiClient {
     }
     
     internal func processCachedResponse(_ cachedResponse: CachedURLResponse) throws -> Data {
-        return try processDataTaskPublisherResponse(output: (data: cachedResponse.data, response: cachedResponse.response))
+        if let cachedResponseError = try processApiResponse(response: cachedResponse.response) {
+            throw cachedResponseError
+        }
+        
+        return cachedResponse.data
     }
 }

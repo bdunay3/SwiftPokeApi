@@ -4,7 +4,8 @@
 // then a couple of pages.
 
 import Combine
-import SwiftPokeApi
+import PokeApi
+import PokiApiCombine
 import SwiftUI
 
 import PlaygroundSupport

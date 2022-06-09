@@ -1,5 +1,6 @@
 import Foundation
-import SwiftPokeApi
+import PokeApi
+import PokiApiDataTask
 
 let api = PokeApiClient()
 

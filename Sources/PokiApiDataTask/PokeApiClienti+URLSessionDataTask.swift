@@ -1,4 +1,5 @@
 import Foundation
+import PokeApi
 
 public extension PokeApiClient {
     typealias PokeApiResult<PokeApiData: Decodable> = (Result<PokeApiData, Error>) -> Void
@@ -10,17 +11,27 @@ public extension PokeApiClient {
                                          result: @escaping PokeApiResult<PokeApiData>) -> URLSessionDataTask {
         let task = session.dataTask(with: request) { [weak self] data, response, error in
             guard let strongSelf = self else {
-                result(.failure(ApiError.nilWeakSelf))
+                result(.failure(PokeApiError.nilWeakSelf))
                 return
             }
             
-            if let responseError = strongSelf.processDataTaskResponse(response: response, error: error) {
-                result(.failure(responseError))
+            if let error = error {
+                result(.failure(error))
+                return
+            }
+            
+            do {
+                if let responseError = try strongSelf.processApiResponse(response: response) {
+                    result(.failure(responseError))
+                    return
+                }
+            } catch {
+                result(.failure(error))
                 return
             }
             
             guard let data = data else {
-                result(.failure(ApiError.missingResponseBodyData))
+                result(.failure(PokeApiError.missingResponseBodyData))
                 return
             }
             
@@ -28,7 +39,7 @@ public extension PokeApiClient {
                 let decodedApiType = try strongSelf.decoder.decode(type.self, from: data)
                 return result(.success(decodedApiType))
             } catch {
-                result(.failure(ApiError.jsonDecodeError(error)))
+                result(.failure(PokeApiError.jsonDecodeError(error)))
             }
         }
         
@@ -78,21 +89,5 @@ public extension PokeApiClient {
                                        limit: limit,
                                        cachePolicy: cachePolicy),
             result: result)
-    }
-    
-    // MARK: - Error Processing
-    
-    internal func processDataTaskResponse(response: URLResponse?, error: Error?) -> Error? {
-        if let error = error { return error }
-        
-        guard let response = response as? HTTPURLResponse else {
-            return ApiError.invalidServerResponse
-        }
-        
-        if response.statusCode != 200 {
-            return ApiError.httpStatusCode(response.statusCode)
-        }
-        
-        return nil
     }
 }

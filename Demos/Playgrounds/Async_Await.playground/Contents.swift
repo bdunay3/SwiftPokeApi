@@ -1,5 +1,6 @@
 import Foundation
-import SwiftPokeApi
+import PokeApi
+import PokeApiAsync
 import _Concurrency
 import PlaygroundSupport
 

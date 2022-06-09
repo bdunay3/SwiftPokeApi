@@ -1,6 +1,7 @@
 import Combine
 import Foundation
-import SwiftPokeApi
+import PokeApi
+import PokiApiCombine
 import SwiftUI
 
 import PlaygroundSupport

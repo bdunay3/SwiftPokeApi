@@ -1,5 +1,6 @@
 import Combine
 import Foundation
+import PokeApi
 
 // MARK: - Fetching Resources
 
@@ -54,13 +55,9 @@ public extension PokeApiClient {
     
     // MARK: - Error Processing
     
-    internal func processDataTaskPublisherResponse(output: URLSession.DataTaskPublisher.Output) throws -> Data {
-        guard let response = output.response as? HTTPURLResponse else {
-            throw ApiError.invalidServerResponse
-        }
-        
-        if response.statusCode != 200 {
-            throw ApiError.httpStatusCode(200)
+    func processDataTaskPublisherResponse(output: URLSession.DataTaskPublisher.Output) throws -> Data {
+        if let responseError = try processApiResponse(response: output.response) {
+            throw responseError
         }
         
         return output.data
