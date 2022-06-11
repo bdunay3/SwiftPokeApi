@@ -1,14 +1,14 @@
 //
-//  PokeApiDemoApp.swift
-//  Shared
+//  PokeAsyncApp.swift
+//  PokeAsync
 //
-//  Created by Bill Dunay on 5/28/22.
+//  Created by Bill Dunay on 6/11/22.
 //
 
 import SwiftUI
 
 @main
-struct PokeApiDemoApp: App {
+struct PokeAsyncApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
