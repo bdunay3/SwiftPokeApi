@@ -9,7 +9,8 @@ let package = Package(
         .macOS(.v11),
         .iOS(.v14),
         .watchOS(.v7),
-        .tvOS(.v14)
+        .tvOS(.v14),
+        .visionOS(.v1)
     ],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
@@ -17,12 +18,6 @@ let package = Package(
             name: "PokeApi",
             targets: [
                 "PokeApi"
-            ]
-        ),
-        .library(
-            name: "PokeApiCaching",
-            targets: [
-                "PokeApiCaching"
             ]
         ),
         .library(
@@ -43,22 +38,26 @@ let package = Package(
                 "PokiApiDataTask"
             ]
         ),
+        .library(
+            name: "PokeApiModels",
+            targets: [
+                "PokeApiModels"
+            ]
+        ),
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
-            name: "PokeApi",
-            dependencies: [
-                // no dependencies
-            ]),
+            name: "PokeApi"
+        ),
+        .testTarget(
+            name: "SwiftPokeApiTests",
+            dependencies: ["PokeApi"]),
+        
+        // Additional Libraries
         .target(
             name: "PokeApiAsync",
-            dependencies: [
-                "PokeApi"
-            ]),
-        .target(
-            name: "PokeApiCaching",
             dependencies: [
                 "PokeApi"
             ]),
@@ -72,8 +71,11 @@ let package = Package(
             dependencies: [
                 "PokeApi"
             ]),
-        .testTarget(
-            name: "SwiftPokeApiTests",
-            dependencies: ["PokeApi"]),
+        .target(
+            name: "PokeApiModels",
+            dependencies: [
+                "PokeApi"
+            ]
+        ),
     ]
 )
