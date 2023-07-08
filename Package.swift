@@ -21,6 +21,12 @@ let package = Package(
             ]
         ),
         .library(
+            name: "PokeApiModels",
+            targets: [
+                "PokeApiModels"
+            ]
+        ),
+        .library(
             name: "PokeApiAsync",
             targets: [
                 "PokeApiAsync"
@@ -38,22 +44,22 @@ let package = Package(
                 "PokiApiDataTask"
             ]
         ),
-        .library(
-            name: "PokeApiModels",
-            targets: [
-                "PokeApiModels"
-            ]
-        ),
     ],
     targets: [
-        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
-        // Targets can depend on other targets in this package, and on products in packages this package depends on.
+        // Needed to work with the remote API. The additional libraries below are split up depending on what you want to do.
+        // This library doesn't force the user to import things they done want to use. For example if you don't to use the
+        // Combine functions, don't import that library into your project.
         .target(
             name: "PokeApi"
         ),
-        .testTarget(
-            name: "SwiftPokeApiTests",
-            dependencies: ["PokeApi"]),
+        
+        // This library splits out the Models into their own library in case you want to work with ONLY the model types.
+        .target(
+            name: "PokeApiModels",
+            dependencies: [
+                "PokeApi"
+            ]
+        ),
         
         // Additional Libraries
         .target(
@@ -71,11 +77,5 @@ let package = Package(
             dependencies: [
                 "PokeApi"
             ]),
-        .target(
-            name: "PokeApiModels",
-            dependencies: [
-                "PokeApi"
-            ]
-        ),
     ]
 )

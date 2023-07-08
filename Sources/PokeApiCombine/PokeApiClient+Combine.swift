@@ -23,11 +23,11 @@ public extension PokeApiClient {
     // MARK: - Get By ID or Name
     
     func get<R: ApiGetable>(_ type: R.Type, byName name: String, cachePolicy: URLRequest.CachePolicy? = nil) -> Publisher<R> {
-        get(type, at: R.resource.url(name: name))
+        get(type, at: R.resource.url(name: name, environment: environment))
     }
     
     func get<R: ApiGetable>(_ type: R.Type, byId id: Int, cachePolicy: URLRequest.CachePolicy? = nil) -> Publisher<R> {
-        get(type, at: R.resource.url(id: id))
+        get(type, at: R.resource.url(id: id, environment: environment))
     }
     
     // MARK: - Get as Page of Resources

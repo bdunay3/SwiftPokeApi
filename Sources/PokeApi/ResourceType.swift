@@ -1,25 +1,25 @@
 import Foundation
 
-public protocol ResourceType {
+public protocol ResourceType: Sendable {
     var rawValue: String { get }
-    var url: URL { get }
     var canFetchByName: Bool { get }
     
-    func url(name: String) -> URL
-    func url(id: Int) -> URL
+    func url(from environment: PokeApiClient.Environment) -> URL
+    func url(name: String, environment: PokeApiClient.Environment) -> URL
+    func url(id: Int, environment: PokeApiClient.Environment) -> URL
 }
 
 public extension ResourceType {
-    var url: URL {
-        PokeApiClient.hostUrl.appendingPathComponent(rawValue)
+    func url(from environment: PokeApiClient.Environment) -> URL {
+        return environment.hostUrl.appendingPathComponent(rawValue)
     }
     
-    func url(name: String) -> URL {
-        guard canFetchByName else { fatalError("Resource at \(url) can't be fetched by name!") }
-        return url.appendingPathComponent(name)
+    func url(name: String, environment: PokeApiClient.Environment) -> URL {
+        guard canFetchByName else { fatalError("Resource at \(environment.hostUrl) can't be fetched by name!") }
+        return environment.hostUrl.appendingPathComponent(name)
     }
     
-    func url(id: Int) -> URL {
-        url.appendingPathComponent(String(id))
+    func url(id: Int, environment: PokeApiClient.Environment) -> URL {
+        environment.hostUrl.appendingPathComponent(String(id))
     }
 }

@@ -10,7 +10,7 @@ public extension PokeApiClient {
     }
     
     func urlGetRequest<PokeApiData: ApiGetable>(for type: PokeApiData.Type, id: Int, cachePolicy: URLRequest.CachePolicy?) -> URLRequest {
-        var urlRequest = URLRequest(url: PokeApiData.resource.url(id: id))
+        var urlRequest = URLRequest(url: PokeApiData.resource.url(id: id, environment: environment))
         urlRequest.httpMethod = "GET"
         urlRequest.cachePolicy = cachePolicy ?? .returnCacheDataElseLoad
         
@@ -18,7 +18,7 @@ public extension PokeApiClient {
     }
     
     func urlGetRequest<PokeApiData: ApiGetable>(for type: PokeApiData.Type, name: String, cachePolicy: URLRequest.CachePolicy?) -> URLRequest {
-        var urlRequest = URLRequest(url: PokeApiData.resource.url(name: name))
+        var urlRequest = URLRequest(url: PokeApiData.resource.url(name: name, environment: environment))
         urlRequest.httpMethod = "GET"
         urlRequest.cachePolicy = cachePolicy ?? .returnCacheDataElseLoad
         
@@ -26,7 +26,7 @@ public extension PokeApiClient {
     }
     
     func urlGetPageRequest<PokeApiData: ApiGetable>(of type: PokeApiData.Type, from startIndex: Int, limit: Int, cachePolicy: URLRequest.CachePolicy?) -> URLRequest {
-        var urlRequest = URLRequest(resource: PokeApiData.resource, startingAt: startIndex, itemsPerPage: limit)
+        var urlRequest = URLRequest(from: environment, resource: PokeApiData.resource, startingAt: startIndex, itemsPerPage: limit)
         urlRequest.httpMethod = "GET"
         urlRequest.cachePolicy = cachePolicy ?? .returnCacheDataElseLoad
         

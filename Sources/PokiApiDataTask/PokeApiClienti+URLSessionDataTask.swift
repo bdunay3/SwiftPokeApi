@@ -65,7 +65,7 @@ public extension PokeApiClient {
                                       byName name: String,
                                       result: @escaping PokeApiResult<PokeApiData>) -> URLSessionDataTask {
         get(type,
-            at: PokeApiData.resource.url(name: name),
+            at: PokeApiData.resource.url(name: name, environment: environment),
             result: result)
     }
     
@@ -74,7 +74,7 @@ public extension PokeApiClient {
                                       byId id: Int,
                                       result: @escaping PokeApiResult<PokeApiData>) -> URLSessionDataTask {
         get(type,
-            at: PokeApiData.resource.url(id: id),
+            at: PokeApiData.resource.url(id: id, environment: environment),
             result: result)
     }
     

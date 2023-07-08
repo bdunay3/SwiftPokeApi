@@ -8,15 +8,33 @@ import Foundation
 // * The API is currently hosted at: https://pokeapi.co
 // * If you want to spin up your own instance and not hit the public host you can grab the source at: https://github.com/PokeAPI/pokeapi/
 public final class PokeApiClient {
-    public static var hostUrl: URL = {
-        guard let hostUrl = URL(string: "https://pokeapi.co/api/v2") else {
-            fatalError("Couldn't create URL to API host")
-        }
+    public enum Environment {
+        case production
+        case localhost
+        case specificHost(URL)
         
-        return hostUrl
-    }()
+        var hostUrl: URL {
+            switch self {
+            case .production:
+                guard let prodUrl = URL(string: "https://pokeapi.co/api/v2") else {
+                    fatalError("Couldn't create URL to API host")
+                }
+                
+                return prodUrl
+            case .localhost:
+                guard let localhostUrl = URL(string: "http://localhost/api/v2") else {
+                    fatalError("Couldn't create URL to API host")
+                }
+                
+                return localhostUrl
+            case .specificHost(let customUrl):
+                return customUrl
+            }
+        }
+    }
     
     public let session: URLSession
+    public let environment: Environment
     
     public let decoder: JSONDecoder = {
         let decoder = JSONDecoder()
@@ -25,7 +43,8 @@ public final class PokeApiClient {
     
     public let cachesQueue = DispatchQueue(label: "PokeApiClientCache Queue", qos: .utility)
     
-    public init(session: URLSession = URLSession.shared) {
+    public init(session: URLSession = URLSession.shared, environment: Environment = .production) {
         self.session = session
+        self.environment = environment
     }
 }
