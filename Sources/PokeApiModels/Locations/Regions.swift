@@ -16,7 +16,7 @@ extension Locations {
         public let locations: [NamedAPIResource<Locations>]
         public let name: String
         public let names: [Name]
-        public let mainGeneration: NamedAPIResource<Games.Generations>
+        public let mainGeneration: NamedAPIResource<Games.Generations>?
         public let pokedexes: [NamedAPIResource<Games.Pokedexes>]
         public let versionGroups: [NamedAPIResource<Games.VersionGroups>]
     }
