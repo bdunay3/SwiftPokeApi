@@ -15,8 +15,8 @@ public struct Moves: ApiGetable {
             case use_after = "use_after"
         }
         
-        public let use_before: [NamedAPIResource<Moves>]?
-        public let use_after: [NamedAPIResource<Moves>]?
+        public let use_before: [NamedAPIResource]?
+        public let use_after: [NamedAPIResource]?
     }
     
     public struct FlavorText: PokeApiResource {
@@ -27,8 +27,8 @@ public struct Moves: ApiGetable {
         }
         
         public let flavorText: String
-        public let language: NamedAPIResource<Language>
-        public let versionGroup: NamedAPIResource<Games.VersionGroups>
+        public let language: NamedAPIResource
+        public let versionGroup: NamedAPIResource
     }
     
     public struct MetaData: PokeApiResource {
@@ -45,8 +45,8 @@ public struct Moves: ApiGetable {
             case statChance = "stat_chance"
         }
         
-        public let ailment: NamedAPIResource<Ailments>
-        public let category: NamedAPIResource<Categories>
+        public let ailment: NamedAPIResource
+        public let category: NamedAPIResource
         public let minHits: Int?
         public let maxHits: Int?
         public let minTurns: Int?
@@ -61,7 +61,7 @@ public struct Moves: ApiGetable {
     
     public struct StatChange: PokeApiResource {
         public let change: Int
-        public let stat: NamedAPIResource<Pokemon.Stat>
+        public let stat: NamedAPIResource
     }
     
     public struct PastMoveStatValues: PokeApiResource {
@@ -79,8 +79,8 @@ public struct Moves: ApiGetable {
         public let power: Int?
         public let pp: Int?
         public let effectEntries: [VerboseEffect]
-        public let pokemonType: NamedAPIResource<Pokemon.Types>?
-        public let version_group: NamedAPIResource<Games.VersionGroups>
+        public let pokemonType: NamedAPIResource?
+        public let version_group: NamedAPIResource
     }
     
     enum CodingKeys: String, CodingKey {
@@ -110,20 +110,20 @@ public struct Moves: ApiGetable {
     public let priority: Int
     public let power: Int?
     public let contestCombos: ComboSets?
-    public let contestType: NamedAPIResource<Contests.Types>?
+    public let contestType: NamedAPIResource?
     public let contestEffect: APIResource?
-    public let damageClass: NamedAPIResource<DamageClasses>
+    public let damageClass: NamedAPIResource
     public let effectEntries: [VerboseEffect]
     public let effectChanges: [Pokemon.Ability.EffectChange]
-    public let learnedByPokemon: [NamedAPIResource<Pokemon>]
+    public let learnedByPokemon: [NamedAPIResource]
     public let flavorTextEntries: [FlavorText]
-    public let generation: NamedAPIResource<Games.Generations>
+    public let generation: NamedAPIResource
     public let machines: [MachineVersionDetail]
-    public let meta: MetaData
+    public let meta: MetaData?
     public let names: [Name]
     public let pastValues: [PastMoveStatValues]?
     public let statChanges: [StatChange]
     public let superContestEffect: APIResource?
-    public let target: NamedAPIResource<Moves.Targets>
-    public let moveType: NamedAPIResource<Pokemon.Types>?
+    public let target: NamedAPIResource
+    public let moveType: NamedAPIResource?
 }

@@ -7,7 +7,7 @@ extension Pokemon {
         
         public struct EffectChange: PokeApiResource {
             public let effectEntries: [Effect]
-            public let versionGroup: NamedAPIResource<Games.VersionGroups>
+            public let versionGroup: NamedAPIResource
 
             enum CodingKeys: String, CodingKey {
                 case effectEntries = "effect_entries"
@@ -17,8 +17,8 @@ extension Pokemon {
         
         public struct FlavorTextEntry: PokeApiResource {
             public let flavorText: String
-            public let language: NamedAPIResource<Language>
-            public let versionGroup: NamedAPIResource<Games.VersionGroups>
+            public let language: NamedAPIResource
+            public let versionGroup: NamedAPIResource
 
             enum CodingKeys: String, CodingKey {
                 case flavorText = "flavor_text"
@@ -30,7 +30,7 @@ extension Pokemon {
         public struct Pokemon: PokeApiResource {
             public let isHidden: Bool
             public let slot: Int
-            public let pokemon: NamedAPIResource<Pokemon>
+            public let pokemon: NamedAPIResource
             
             enum CodingKeys: String, CodingKey {
                 case isHidden = "is_hidden"
@@ -41,7 +41,7 @@ extension Pokemon {
         public let id: Int
         public let name: String
         public let isMainSeries: Bool
-        public let generation: NamedAPIResource<Games.Generations>
+        public let generation: NamedAPIResource
         public let names: [Name]
         public let effectEntries: [VerboseEffect]
         public let effectChanges: [EffectChange]

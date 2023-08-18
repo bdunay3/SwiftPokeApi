@@ -7,7 +7,7 @@ extension Pokemon {
         
         public struct Genus: PokeApiResource {
             public let genus: String
-            public let language: NamedAPIResource<Language>
+            public let language: NamedAPIResource
         }
         
         public struct SpeciesDexEntry: PokeApiResource {
@@ -17,7 +17,7 @@ extension Pokemon {
             }
             
             public let entryNumber: Int
-            public let pokedex: NamedAPIResource<Games.Pokedexes>
+            public let pokedex: NamedAPIResource
         }
         
         public struct PalParkEncounterArea: PokeApiResource {
@@ -28,7 +28,7 @@ extension Pokemon {
             
             public let baseScore: Int
             public let rate: Int
-            public let area: NamedAPIResource<Locations.PalParkArea>
+            public let area: NamedAPIResource
         }
         
         public struct SpeciesVariety: PokeApiResource {
@@ -38,7 +38,7 @@ extension Pokemon {
             }
             
             public let isDefault: Bool
-            public let pokemon: NamedAPIResource<Pokemon>
+            public let pokemon: NamedAPIResource
         }
         
         enum CodingKeys: String, CodingKey {
@@ -70,22 +70,22 @@ extension Pokemon {
         public let order: Int
         public let genderRate: Int
         public let captureRate: Int
-        public let baseHappiness: Int
+        public let baseHappiness: Int?
         public let isBaby: Bool
         public let isLegendary: Bool
         public let isMythical: Bool
-        public let hatchCounter: Int
+        public let hatchCounter: Int?
         public let hasGenderDifferences: Bool
         public let formsSwitchable: Bool
-        public let growthRate: NamedAPIResource<GrowthRates>
+        public let growthRate: NamedAPIResource
         public let pokedex_numbers: [SpeciesDexEntry]
-        public let eggGroups: [NamedAPIResource<EggGroups>]
-        public let color: NamedAPIResource<Colors>
-        public let shape: NamedAPIResource<Shapes>
-        public let evolvesFromSpecies: NamedAPIResource<Species>?
+        public let eggGroups: [NamedAPIResource]
+        public let color: NamedAPIResource
+        public let shape: NamedAPIResource?
+        public let evolvesFromSpecies: NamedAPIResource?
         public let evolution_chain: APIResource
-        public let habitat: NamedAPIResource<Habitats>
-        public let generation: NamedAPIResource<Games.Generations>
+        public let habitat: NamedAPIResource?
+        public let generation: NamedAPIResource
         public let names: [Name]
         public let palParkEncounters: [PalParkEncounterArea]
         public let flavorTextEntries: [FlavorText]

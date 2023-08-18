@@ -40,10 +40,10 @@ extension Pokemon {
         public let isBattleOnly: Bool
         public let isMega: Bool
         public let formName: String
-        public let pokemon: NamedAPIResource<Pokemon>
+        public let pokemon: NamedAPIResource
         public let types: [Pokemon.FormType]
         public let sprites: Sprites
-        public let version_group: NamedAPIResource<Games.VersionGroups>
+        public let version_group: NamedAPIResource
         public let names: [Name]
         public let formNames: [Name]
     }

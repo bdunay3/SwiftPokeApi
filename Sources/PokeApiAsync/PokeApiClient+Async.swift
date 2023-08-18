@@ -9,7 +9,11 @@ public extension PokeApiClient {
             throw PokeApiError.invalidServerResponse
         }
         
-        return try decoder.decode(type, from: data)
+        do {
+            return try decoder.decode(type, from: data)
+        } catch {
+            throw PokeApiError.jsonDecodeError(error, String(decoding: data, as: UTF8.self))
+        }
     }
     
     func get<R: PokeApiResource>(_ type: R.Type, at url: URL, cachePolicy: URLRequest.CachePolicy? = nil) async throws -> R {
@@ -27,12 +31,16 @@ public extension PokeApiClient {
     func getPage<R: ApiGetable>(of type: R.Type,
                                 from startIndex: Int,
                                 limit: Int,
-                                cachePolicy: URLRequest.CachePolicy? = nil) async throws -> NamedAPIResourceList<R> {
-        try await get(NamedAPIResourceList<R>.self,
-                      request: urlGetPageRequest(of: type,
-                                                 from: startIndex,
-                                                 limit: limit,
-                                                 cachePolicy: cachePolicy))
+                                cachePolicy: URLRequest.CachePolicy? = nil) async throws -> NamedAPIResourceList {
+        try await get(
+            NamedAPIResourceList.self,
+            request: urlGetPageRequest(
+                of: type,
+                from: startIndex,
+                limit: limit,
+                cachePolicy: cachePolicy
+            )
+        )
     }
     
     func getResourcesForPage<R: ApiGetable>(of type: R.Type,

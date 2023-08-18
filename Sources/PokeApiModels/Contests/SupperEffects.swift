@@ -14,6 +14,6 @@ extension Contests {
         public let id: Int
         public let appeal: Int
         public let flavorTextEntries: [FlavorText]
-        public let moves: [NamedAPIResource<Moves>]
+        public let moves: [NamedAPIResource]
     }
 }

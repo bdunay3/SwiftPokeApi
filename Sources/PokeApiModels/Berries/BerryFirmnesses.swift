@@ -7,7 +7,7 @@ extension Berries {
         
         public let id: Int
         public let name: String
-        public let berries: [NamedAPIResource<Berries.Berry>]
+        public let berries: [NamedAPIResource]
         public let names: [Name]
     }
 }

@@ -13,6 +13,6 @@ extension Evolution {
         public let id: Int
         public let name: String
         public let names: [Name]
-        public let pokemonSpecies: [NamedAPIResource<Pokemon.Species>]
+        public let pokemonSpecies: [NamedAPIResource]
     }
 }

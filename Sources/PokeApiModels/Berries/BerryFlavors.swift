@@ -7,7 +7,7 @@ extension Berries {
         
         public struct Map: PokeApiResource {
             public let potency: Int
-            public let berry: NamedAPIResource<Berry>
+            public let berry: NamedAPIResource
         }
         
         enum CodingKeys: String, CodingKey {
@@ -19,7 +19,7 @@ extension Berries {
         public let id: Int
         public let name: String
         public let berries: [Map]
-        public let contestType: NamedAPIResource<Contests.Types>?
+        public let contestType: NamedAPIResource?
         public let names: [Name]
     }
 }

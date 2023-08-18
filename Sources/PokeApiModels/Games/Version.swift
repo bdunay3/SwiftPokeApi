@@ -13,6 +13,6 @@ extension Games {
         public let id: Int
         public let name: String
         public let names: [Name]
-        public let versionGroup: NamedAPIResource<VersionGroups>
+        public let versionGroup: NamedAPIResource
     }
 }

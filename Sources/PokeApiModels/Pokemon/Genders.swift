@@ -12,7 +12,7 @@ extension Pokemon {
             }
             
             public let rate: Int
-            public let pokemonSpecies: NamedAPIResource<Species>
+            public let pokemonSpecies: NamedAPIResource
         }
         
         enum CodingKeys: String, CodingKey {
@@ -24,6 +24,6 @@ extension Pokemon {
         public let id: Int
         public let name: String
         public let pokemonSpeciesDetails: [SpeciesGender]
-        public let requiredForEvolution: [NamedAPIResource<Species>]
+        public let requiredForEvolution: [NamedAPIResource]
     }
 }

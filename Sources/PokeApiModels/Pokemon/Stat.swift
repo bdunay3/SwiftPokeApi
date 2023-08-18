@@ -7,7 +7,7 @@ extension Pokemon {
         
         public struct MoveStatAffect: PokeApiResource {
             public let change: Int
-            public let move: NamedAPIResource<Moves>
+            public let move: NamedAPIResource
         }
         
         public struct MoveStatAffectSets: PokeApiResource {
@@ -16,8 +16,8 @@ extension Pokemon {
         }
         
         public struct NatureStatAffectSets: PokeApiResource {
-            public let increase: [NamedAPIResource<Natures>]
-            public let decrease: [NamedAPIResource<Natures>]
+            public let increase: [NamedAPIResource]
+            public let decrease: [NamedAPIResource]
         }
         
         enum CodingKeys: String, CodingKey {
@@ -38,7 +38,7 @@ extension Pokemon {
         public let affectingMoves: MoveStatAffectSets
         public let affectingNatures: NatureStatAffectSets
         public let characteristics: [APIResource]
-        public let moveDamageClass: NamedAPIResource<Moves.DamageClasses>?
+        public let moveDamageClass: NamedAPIResource?
         public let names: [Name]
     }
 }

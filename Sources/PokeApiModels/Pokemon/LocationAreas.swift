@@ -8,7 +8,7 @@ extension Pokemon {
             case versionDetails = "version_details"
         }
         
-        public let locationArea: NamedAPIResource<Locations.Areas>
+        public let locationArea: NamedAPIResource
         public let versionDetails: [VersionEncounterDetail]
     }
 

@@ -15,7 +15,7 @@ extension Pokemon {
         public let formula: String
         public let descriptions: [Description]
         public let levels: [ExperienceLevel]
-        public let pokemonSpecies: [NamedAPIResource<Species>]
+        public let pokemonSpecies: [NamedAPIResource]
         
         enum CodingKeys: String, CodingKey {
             case id, name, formula, descriptions, levels

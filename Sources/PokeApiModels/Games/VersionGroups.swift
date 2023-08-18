@@ -14,10 +14,10 @@ extension Games {
         public let id: Int
         public let name: String
         public let order: Int
-        public let generation: NamedAPIResource<Games.Generations>
-        public let moveLearnMethods: [NamedAPIResource<Moves.LearnMethods>]?
-        public let pokedexes: [NamedAPIResource<Pokedexes>]
-        public let regions: [NamedAPIResource<Locations.Regions>]
-        public let versions: [NamedAPIResource<Games.Version>]
+        public let generation: NamedAPIResource
+        public let moveLearnMethods: [NamedAPIResource]?
+        public let pokedexes: [NamedAPIResource]
+        public let regions: [NamedAPIResource]
+        public let versions: [NamedAPIResource]
     }
 }

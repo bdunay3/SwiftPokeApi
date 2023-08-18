@@ -10,7 +10,7 @@ public extension PokeApiClient {
         do {
             return try decoder.decode(type, from: cachedResponse.data)
         } catch {
-            throw PokeApiError.jsonDecodeError(error)
+            throw PokeApiError.jsonDecodeError(error, String(decoding: cachedResponse.data, as: UTF8.self))
         }
     }
     
@@ -27,11 +27,13 @@ public extension PokeApiClient {
     }
     
     func getCachedPage<R: ApiGetable>(of type: R.Type,
-                                          from startIndex: Int,
-                                          limit: Int,
-                                          cachePolicy: URLRequest.CachePolicy? = nil) throws -> NamedAPIResourceList<R>? {
+                                      from startIndex: Int,
+                                      limit: Int,
+                                      cachePolicy: URLRequest.CachePolicy? = nil) throws -> NamedAPIResourceList? {
         
-        try getCachedResource(NamedAPIResourceList<R>.self,
-                              request: urlGetPageRequest(of: type, from: startIndex, limit: limit, cachePolicy: cachePolicy))
+        try getCachedResource(
+            NamedAPIResourceList.self,
+            request: urlGetPageRequest(of: type, from: startIndex, limit: limit, cachePolicy: cachePolicy)
+        )
     }
 }

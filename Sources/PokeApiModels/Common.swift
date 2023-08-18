@@ -7,12 +7,12 @@ public struct APIResource: PokeApiResource {
 
 public struct Description: PokeApiResource {
     public let description: String
-    public let language: NamedAPIResource<Language>
+    public let language: NamedAPIResource
 }
 
 public struct Effect: PokeApiResource {
     public let effect: String
-    public let language: NamedAPIResource<Language>
+    public let language: NamedAPIResource
 }
 
 public struct Encounter: PokeApiResource {
@@ -25,9 +25,9 @@ public struct Encounter: PokeApiResource {
     
     public let minLevel: Int
     public let maxLevel: Int
-    public let conditionValues: [NamedAPIResource<Encounters.ConditionValues>]
+    public let conditionValues: [NamedAPIResource]
     public let chance: Int
-    public let method: NamedAPIResource<Encounters.Methods>
+    public let method: NamedAPIResource
 }
 
 public struct FlavorText: PokeApiResource {
@@ -37,8 +37,8 @@ public struct FlavorText: PokeApiResource {
     }
     
     public let flavorText: String
-    public let language: NamedAPIResource<Language>
-    public let version: NamedAPIResource<Games.Version>?
+    public let language: NamedAPIResource
+    public let version: NamedAPIResource?
 }
 
 public struct GenerationGameIndex: PokeApiResource {
@@ -48,7 +48,7 @@ public struct GenerationGameIndex: PokeApiResource {
     }
     
     public let gameIndex: Int
-    public let generation: NamedAPIResource<Games.Generations>
+    public let generation: NamedAPIResource
 }
 
 public struct MachineVersionDetail: PokeApiResource {
@@ -58,12 +58,12 @@ public struct MachineVersionDetail: PokeApiResource {
     }
     
     public let machine: APIResource
-    public let versionGroup: NamedAPIResource<Games.VersionGroups>
+    public let versionGroup: NamedAPIResource
 }
 
 public struct Name: PokeApiResource {
     public let name: String
-    public let language: NamedAPIResource<Language>
+    public let language: NamedAPIResource
 }
 
 public struct VerboseEffect: PokeApiResource {
@@ -75,7 +75,7 @@ public struct VerboseEffect: PokeApiResource {
     
     public let effect: String
     public let shortEffect: String
-    public let language: NamedAPIResource<Language>
+    public let language: NamedAPIResource
 }
 
 public struct VersionEncounterDetail: PokeApiResource {
@@ -85,7 +85,7 @@ public struct VersionEncounterDetail: PokeApiResource {
         case encounterDetails = "encounter_details"
     }
     
-    public let version: NamedAPIResource<Games.Version>
+    public let version: NamedAPIResource
     public let maxChance: Int
     public let encounterDetails: [Encounter]
 }
@@ -97,7 +97,7 @@ public struct VersionGameIndex: PokeApiResource {
     }
     
     public let gameIndex: Int
-    public let version: NamedAPIResource<Games.Version>
+    public let version: NamedAPIResource
 }
 
 public struct VersionGroupFlavorText: PokeApiResource {
@@ -108,6 +108,6 @@ public struct VersionGroupFlavorText: PokeApiResource {
     }
     
     public let text: String
-    public let language: NamedAPIResource<Language>
-    public let versionGroup: NamedAPIResource<Games.VersionGroups>
+    public let language: NamedAPIResource
+    public let versionGroup: NamedAPIResource
 }

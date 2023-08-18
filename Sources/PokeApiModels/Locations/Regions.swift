@@ -13,11 +13,11 @@ extension Locations {
         }
         
         public let id: Int
-        public let locations: [NamedAPIResource<Locations>]
+        public let locations: [NamedAPIResource]
         public let name: String
         public let names: [Name]
-        public let mainGeneration: NamedAPIResource<Games.Generations>?
-        public let pokedexes: [NamedAPIResource<Games.Pokedexes>]
-        public let versionGroups: [NamedAPIResource<Games.VersionGroups>]
+        public let mainGeneration: NamedAPIResource?
+        public let pokedexes: [NamedAPIResource]
+        public let versionGroups: [NamedAPIResource]
     }
 }

@@ -12,7 +12,7 @@ extension Games {
             }
             
             public let entryNumber: Int
-            public let pokemonSpecies: NamedAPIResource<Pokemon.Species>
+            public let pokemonSpecies: NamedAPIResource
         }
         
         enum CodingKeys: String, CodingKey {
@@ -30,7 +30,7 @@ extension Games {
         public let descriptions: [Description]
         public let names: [Name]
         public let pokemonEntries: [PokemonEntry]
-        public let region: NamedAPIResource<Locations.Regions>?
-        public let versionGroup: [NamedAPIResource<Games.VersionGroups>]
+        public let region: NamedAPIResource?
+        public let versionGroup: [NamedAPIResource]
     }
 }

@@ -7,8 +7,8 @@ import Foundation
 // * Fully open source
 // * The API is currently hosted at: https://pokeapi.co
 // * If you want to spin up your own instance and not hit the public host you can grab the source at: https://github.com/PokeAPI/pokeapi/
-public final class PokeApiClient {
-    public enum Environment {
+public final class PokeApiClient: Sendable {
+    public enum Environment: Sendable {
         case production
         case localhost
         case specificHost(URL)

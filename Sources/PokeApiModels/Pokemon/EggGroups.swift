@@ -8,7 +8,7 @@ extension Pokemon {
         public let id: Int
         public let name: String
         public let names: [Name]
-        public let pokemonSpecies: [NamedAPIResource<Species>]
+        public let pokemonSpecies: [NamedAPIResource]
         
         enum CodingKeys: String, CodingKey {
             case id

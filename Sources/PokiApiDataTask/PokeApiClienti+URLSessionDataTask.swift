@@ -3,7 +3,7 @@ import PokeApi
 
 public extension PokeApiClient {
     typealias PokeApiResult<PokeApiData: Decodable> = (Result<PokeApiData, Error>) -> Void
-    typealias PokeApiPageResult<PokeApiData: ApiGetable> = (Result<NamedAPIResourceList<PokeApiData>, Error>) -> Void
+    typealias PokeApiPageResult = (Result<NamedAPIResourceList, Error>) -> Void
     
     @discardableResult
     func get<PokeApiData: Decodable>(_ type: PokeApiData.Type,
@@ -39,7 +39,7 @@ public extension PokeApiClient {
                 let decodedApiType = try strongSelf.decoder.decode(type.self, from: data)
                 return result(.success(decodedApiType))
             } catch {
-                result(.failure(PokeApiError.jsonDecodeError(error)))
+                result(.failure(PokeApiError.jsonDecodeError(error, String(decoding: data, as: UTF8.self))))
             }
         }
         
@@ -81,13 +81,15 @@ public extension PokeApiClient {
     // MARK: - Get as Page of Resources
     
     @discardableResult
-    func getPage<PokeApiData: ApiGetable>(of type: PokeApiData.Type, from startIndex: Int, limit: Int, cachePolicy: URLRequest.CachePolicy? = nil, result: @escaping PokeApiPageResult<PokeApiData>) -> URLSessionDataTask {
+    func getPage<PokeApiData: ApiGetable>(of type: PokeApiData.Type, from startIndex: Int, limit: Int, cachePolicy: URLRequest.CachePolicy? = nil, result: @escaping PokeApiPageResult) -> URLSessionDataTask {
         
-        get(NamedAPIResourceList<PokeApiData>.self,
+        get(
+            NamedAPIResourceList.self,
             request: urlGetPageRequest(of: type,
                                        from: startIndex,
                                        limit: limit,
                                        cachePolicy: cachePolicy),
-            result: result)
+            result: result
+        )
     }
 }

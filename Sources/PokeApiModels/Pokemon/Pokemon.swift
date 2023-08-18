@@ -5,7 +5,7 @@ public struct Pokemon: ApiGetable {
     public static let resource: ResourceType = PokeApiClient.Resource.pokemon
     
     public struct Abilities: PokeApiResource {
-        public let ability: NamedAPIResource<Ability>
+        public let ability: NamedAPIResource
         public let isHidden: Bool
         public let slot: Int
 
@@ -18,13 +18,13 @@ public struct Pokemon: ApiGetable {
     
     public struct FormType: PokeApiResource {
         public let slot: Int
-        public let `type`: NamedAPIResource<Types>
+        public let `type`: NamedAPIResource
     }
     
     // MARK: - GameIndex
     public struct GameIndex: PokeApiResource {
         public let gameIndex: Int
-        public let version: NamedAPIResource<Games.Version>
+        public let version: NamedAPIResource
 
         enum CodingKeys: String, CodingKey {
             case gameIndex = "game_index"
@@ -34,7 +34,7 @@ public struct Pokemon: ApiGetable {
     
     public struct HeldItem: PokeApiResource {
         public struct Version: PokeApiResource {
-            public let version: NamedAPIResource<Games.Version>
+            public let version: NamedAPIResource
             public let rarity: Int
         }
         
@@ -43,14 +43,14 @@ public struct Pokemon: ApiGetable {
             case versionDetails = "version_details"
         }
         
-        public let item: NamedAPIResource<Items.Item>
+        public let item: NamedAPIResource
         public let versionDetails: [Pokemon.HeldItem.Version]
     }
     
     public struct Move: PokeApiResource {
         public struct Version: PokeApiResource {
-            public let moveLearnMethod: NamedAPIResource<Moves.LearnMethods>
-            public let versionGroup: NamedAPIResource<Games.VersionGroups>
+            public let moveLearnMethod: NamedAPIResource
+            public let versionGroup: NamedAPIResource
             public let levelLearnedAt: Int
             
             enum CodingKeys: String, CodingKey {
@@ -60,7 +60,7 @@ public struct Pokemon: ApiGetable {
             }
         }
         
-        public let move: NamedAPIResource<Moves>
+        public let move: NamedAPIResource
         public let versionGroupDetails: [Version]
         
         enum CodingKeys: String, CodingKey {
@@ -76,16 +76,62 @@ public struct Pokemon: ApiGetable {
         }
         
         public let slot: Int
-        public let theType: NamedAPIResource<Types>
+        public let theType: NamedAPIResource
     }
     
     public struct PastType: PokeApiResource {
-        public let generation: NamedAPIResource<Games.Generations>
+        public let generation: NamedAPIResource
         public let types: [PokemonType]
     }
     
     // MARK: - Sprites
     public struct Sprites: PokeApiResource {
+        public struct Other: PokeApiResource {
+            public struct DreamWorld: PokeApiResource {
+                public let frontDefault: URL?
+                public let frontFemale: URL?
+                
+                enum CodingKeys: String, CodingKey {
+                    case frontDefault = "front_default"
+                    case frontFemale = "front_female"
+                }
+            }
+            
+            public struct Home: PokeApiResource {
+                public let frontDefault: URL?
+                public let frontFemale: URL?
+                public let frontShiny: URL?
+                public let frontShinyFemale: URL?
+                
+                enum CodingKeys: String, CodingKey {
+                    case frontDefault = "front_default"
+                    case frontFemale = "front_female"
+                    case frontShiny = "front_shiny"
+                    case frontShinyFemale = "front_shiny_female"
+                }
+            }
+            
+            public struct OfficalArtwork: PokeApiResource {
+                public let frontDefault: URL?
+                public let frontShiny: URL?
+                
+                enum CodingKeys: String, CodingKey {
+                    case frontDefault = "front_default"
+                    case frontShiny = "front_shiny"
+                }
+            }
+            
+            public let dreamWorld: DreamWorld?
+            public let home: Home?
+            public let officialArtwork: OfficalArtwork?
+            
+            enum CodingKeys: String, CodingKey {
+                case dreamWorld = "dream_world"
+                case home
+                case officialArtwork = "official-artwork"
+            }
+        }
+        
         public let backDefault: URL?
         public let backFemale: URL?
         public let backShiny: URL?
@@ -94,6 +140,8 @@ public struct Pokemon: ApiGetable {
         public let frontFemale: URL?
         public let frontShiny: URL?
         public let frontShinyFemale: URL?
+        
+        public let other: Other?
 
         enum CodingKeys: String, CodingKey {
             case backDefault = "back_default"
@@ -104,11 +152,12 @@ public struct Pokemon: ApiGetable {
             case frontFemale = "front_female"
             case frontShiny = "front_shiny"
             case frontShinyFemale = "front_shiny_female"
+            case other
         }
     }
     
     public struct Stats: PokeApiResource {
-        public let stat: NamedAPIResource<Stat>
+        public let stat: NamedAPIResource
         public let effort: Int
         public let baseStat: Int
         
@@ -138,8 +187,8 @@ public struct Pokemon: ApiGetable {
     // MARK: - Properties
     
     public let abilities: [Abilities]
-    public let baseExperience: Int
-    public let forms: [NamedAPIResource<Forms>]
+    public let baseExperience: Int?
+    public let forms: [NamedAPIResource]
     public let gameIndices: [GameIndex]
     public let height: Int
     public let heldItems: [HeldItem]
@@ -150,7 +199,7 @@ public struct Pokemon: ApiGetable {
     public let name: String
     public let order: Int
     public let pastTypes: [PastType]
-    public let species: NamedAPIResource<Species>
+    public let species: NamedAPIResource
     public let sprites: Sprites
     public let stats: [Pokemon.Stats]
     public let types: [PokemonType]

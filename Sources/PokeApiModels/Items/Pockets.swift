@@ -7,7 +7,7 @@ extension Items {
         
         public let id: Int
         public let name: String
-        public let categories: [NamedAPIResource<Category>]
+        public let categories: [NamedAPIResource]
         public let names: [Name]
     }
 }

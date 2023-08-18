@@ -8,7 +8,7 @@ extension Contests {
         public struct ContestName: PokeApiResource {
             public let name: String
             public let color: String
-            public let language: NamedAPIResource<Language>
+            public let language: NamedAPIResource
         }
         
         enum CodingKeys: String, CodingKey {
@@ -19,7 +19,7 @@ extension Contests {
         
         public let id: Int
         public let name: String
-        public let berryFlavor: NamedAPIResource<Berries.Flavors>
+        public let berryFlavor: NamedAPIResource
         public let names: [ContestName]
     }
 }

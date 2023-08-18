@@ -12,7 +12,7 @@ extension Pokemon {
             }
             
             public let maxChange: Int
-            public let pokeathlonStat: NamedAPIResource<PokeathlonStats>
+            public let pokeathlonStat: NamedAPIResource
         }
         
         public struct MoveBattleStylePreference: PokeApiResource {
@@ -24,7 +24,7 @@ extension Pokemon {
             
             public let lowHpPreference: Int
             public let highHpPreference: Int
-            public let moveBattleStyle: NamedAPIResource<Moves.BattleStyles>
+            public let moveBattleStyle: NamedAPIResource
         }
         
         enum CodingKeys: String, CodingKey {
@@ -40,10 +40,10 @@ extension Pokemon {
         
         public let id: Int
         public let name: String
-        public let decreasedStat: NamedAPIResource<Pokemon.Stat>?
-        public let increasedStat: NamedAPIResource<Pokemon.Stat>?
-        public let hatesFlavor: NamedAPIResource<Berries.Flavors>?
-        public let likesFlavor: NamedAPIResource<Berries.Flavors>?
+        public let decreasedStat: NamedAPIResource?
+        public let increasedStat: NamedAPIResource?
+        public let hatesFlavor: NamedAPIResource?
+        public let likesFlavor: NamedAPIResource?
         public let pokeathlonStatChanges: [StatChange]
         public let moveBattleStylePreferences: [MoveBattleStylePreference]
         public let names: [Name]

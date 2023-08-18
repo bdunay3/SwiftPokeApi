@@ -10,13 +10,13 @@ extension Items {
         }
         
         public struct HolderPokemon: PokeApiResource {
-            public let pokemon: NamedAPIResource<Pokemon>
+            public let pokemon: NamedAPIResource
             public let version_details: [HolderPokemonVersionDetail]
         }
         
         public struct HolderPokemonVersionDetail: PokeApiResource {
             public let rarity: Int
-            public let version: NamedAPIResource<Games.Version>
+            public let version: NamedAPIResource
         }
         
         enum CodingKeys: String, CodingKey {
@@ -37,9 +37,9 @@ extension Items {
         public let name: String
         public let cost: Int
         public let flingPower: Int?
-        public let flingEffect: NamedAPIResource<FlingEffects>?
-        public let attributes: [NamedAPIResource<Attributes>]
-        public let category: NamedAPIResource<Category>
+        public let flingEffect: NamedAPIResource?
+        public let attributes: [NamedAPIResource]
+        public let category: NamedAPIResource
         public let effectEntries: [VerboseEffect]
         public let flavorTextEntries: [VersionGroupFlavorText]
         public let gameIndices: [GenerationGameIndex]

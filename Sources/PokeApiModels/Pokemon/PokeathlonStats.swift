@@ -12,7 +12,7 @@ extension Pokemon {
             }
             
             public let max_change: Int
-            public let nature: NamedAPIResource<Natures>
+            public let nature: NamedAPIResource
         }
         
         public struct NaturePokeathlonStatAffectSets: PokeApiResource {

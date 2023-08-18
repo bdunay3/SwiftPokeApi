@@ -7,7 +7,7 @@ extension Pokemon {
         
         public struct TypePokemon: PokeApiResource {
             public let slot: Int
-            public let pokemon: NamedAPIResource<Pokemon>
+            public let pokemon: NamedAPIResource
         }
         
         public struct DamageRelations: PokeApiResource {
@@ -20,12 +20,12 @@ extension Pokemon {
                 case doubleDamageFrom = "double_damage_from"
             }
             
-            public let noDamageTo: [NamedAPIResource<Types>]
-            public let halfDamageTo: [NamedAPIResource<Types>]
-            public let doubleDamageTo: [NamedAPIResource<Types>]
-            public let noDamageFrom: [NamedAPIResource<Types>]
-            public let halfDamageFrom: [NamedAPIResource<Types>]
-            public let doubleDamageFrom: [NamedAPIResource<Types>]
+            public let noDamageTo: [NamedAPIResource]
+            public let halfDamageTo: [NamedAPIResource]
+            public let doubleDamageTo: [NamedAPIResource]
+            public let noDamageFrom: [NamedAPIResource]
+            public let halfDamageFrom: [NamedAPIResource]
+            public let doubleDamageFrom: [NamedAPIResource]
         }
         
         public struct RelationsPast: PokeApiResource {
@@ -34,7 +34,7 @@ extension Pokemon {
                 case damageRelations = "damage_relations"
             }
             
-            public let generation: NamedAPIResource<Games.Generations>
+            public let generation: NamedAPIResource
             public let damageRelations: DamageRelations
         }
         
@@ -53,10 +53,10 @@ extension Pokemon {
         public let damageRelations: DamageRelations
         public let pastDamageRelations: [RelationsPast]
         public let gameIndices: [GenerationGameIndex]
-        public let generation: NamedAPIResource<Games.Generations>
-        public let moveDamageClass: NamedAPIResource<Moves.DamageClasses>
+        public let generation: NamedAPIResource
+        public let moveDamageClass: NamedAPIResource?
         public let names: [Name]
         public let pokemon: [TypePokemon]
-        public let moves: [NamedAPIResource<Moves>]
+        public let moves: [NamedAPIResource]
     }
 }

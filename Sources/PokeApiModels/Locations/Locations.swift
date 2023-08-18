@@ -12,8 +12,8 @@ public struct Locations: ApiGetable {
     
     public let id: Int
     public let name: String
-    public let region: NamedAPIResource<Regions>
+    public let region: NamedAPIResource
     public let names: [Name]
     public let gameIndices: [GenerationGameIndex]
-    public let areas: [NamedAPIResource<Areas>]
+    public let areas: [NamedAPIResource]
 }

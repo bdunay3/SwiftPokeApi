@@ -6,7 +6,7 @@ import PokeApi
 
 public extension PokeApiClient {
     typealias Publisher<PokeApiData: PokeApiResource> = AnyPublisher<PokeApiData, Error>
-    typealias PagePublisher<PokeApiData: ApiGetable> = AnyPublisher<NamedAPIResourceList<PokeApiData>, Error>
+    typealias PagePublisher = AnyPublisher<NamedAPIResourceList, Error>
     
     func get<PokeApiData: PokeApiResource>(_ type: PokeApiData.Type, request: URLRequest) -> Publisher<PokeApiData> {
         session.dataTaskPublisher(for: request)
@@ -35,10 +35,12 @@ public extension PokeApiClient {
     func getPage<R: ApiGetable>(of type: R.Type,
                                 from startIndex: Int,
                                 limit: Int,
-                                cachePolicy: URLRequest.CachePolicy? = nil) -> PagePublisher<R> {
+                                cachePolicy: URLRequest.CachePolicy? = nil) -> PagePublisher {
         
-        return get(NamedAPIResourceList<R>.self,
-                   request: urlGetPageRequest(of: type, from: startIndex, limit: limit, cachePolicy: cachePolicy))
+        return get(
+            NamedAPIResourceList.self,
+            request: urlGetPageRequest(of: type, from: startIndex, limit: limit, cachePolicy: cachePolicy)
+        )
     }
     
     func getResourcesForPage<R: ApiGetable>(of type: R.Type,
@@ -48,7 +50,7 @@ public extension PokeApiClient {
         
         getPage(of: type, from: startIndex, limit: limit, cachePolicy: cachePolicy)
             .flatMap {
-                $0.itemsPublisher(using: self)
+                $0.itemsPublisher(of: R.self, using: self)
             }
             .eraseToAnyPublisher()  
     }
