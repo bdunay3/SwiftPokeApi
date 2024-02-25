@@ -2,7 +2,7 @@ import Foundation
 import PokeApi
 
 extension Pokemon {
-    public struct GrowthRates: ApiGetable {
+    public struct GrowthRates: ApiGetable, Identifiable {
         public static var resource: ResourceType = PokeApiClient.Resource.Pokemon.growthRate
         
         public struct ExperienceLevel: PokeApiResource {

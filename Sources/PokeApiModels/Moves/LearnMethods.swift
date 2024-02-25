@@ -2,7 +2,7 @@ import Foundation
 import PokeApi
 
 extension Moves {
-    public struct LearnMethods: ApiGetable {
+    public struct LearnMethods: ApiGetable, Identifiable {
         public static let resource: ResourceType = PokeApiClient.Resource.Moves.learnMethods
         
         enum CodingKeys: String, CodingKey {

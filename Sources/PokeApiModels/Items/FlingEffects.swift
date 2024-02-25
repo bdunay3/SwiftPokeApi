@@ -2,7 +2,7 @@ import Foundation
 import PokeApi
 
 extension Items {
-    public struct FlingEffects: ApiGetable {
+    public struct FlingEffects: ApiGetable, Identifiable {
         public static var resource: ResourceType = PokeApiClient.Resource.Items.flingEffects
         
         enum CodingKeys: String, CodingKey {

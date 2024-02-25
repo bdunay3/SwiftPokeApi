@@ -2,13 +2,8 @@ import Foundation
 import PokeApi
 
 extension Pokemon {
-    public struct EggGroups: ApiGetable {
+    public struct EggGroups: ApiGetable, Identifiable {
         public static var resource: ResourceType = PokeApiClient.Resource.Pokemon.eggGroup
-        
-        public let id: Int
-        public let name: String
-        public let names: [Name]
-        public let pokemonSpecies: [NamedAPIResource]
         
         enum CodingKeys: String, CodingKey {
             case id
@@ -16,5 +11,10 @@ extension Pokemon {
             case names
             case pokemonSpecies = "pokemon_species"
         }
+        
+        public let id: Int
+        public let name: String
+        public let names: [Name]
+        public let pokemonSpecies: [NamedAPIResource]
     }
 }

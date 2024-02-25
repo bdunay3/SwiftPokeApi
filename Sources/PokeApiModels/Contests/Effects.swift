@@ -2,7 +2,7 @@ import Foundation
 import PokeApi
 
 extension Contests {
-    public struct Effects: ApiGetable {
+    public struct Effects: ApiGetable, Identifiable {
         public static let resource: ResourceType = PokeApiClient.Resource.Contests.effects
         
         enum CodingKeys: String, CodingKey {

@@ -2,7 +2,7 @@ import Foundation
 import PokeApi
 
 public enum Evolution {
-    public struct Chains: ApiGetable {
+    public struct Chains: ApiGetable, Identifiable {
         public static let resource: ResourceType = PokeApiClient.Resource.Evolution.chains
         
         public struct Link: PokeApiResource {

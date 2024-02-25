@@ -2,7 +2,7 @@ import Foundation
 import PokeApi
 
 extension Pokemon {
-    public struct Colors: ApiGetable {
+    public struct Colors: ApiGetable, Identifiable {
         public static var resource: ResourceType = PokeApiClient.Resource.Pokemon.colors
         
         enum CodingKeys: String, CodingKey {

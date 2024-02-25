@@ -2,7 +2,7 @@ import Foundation
 import PokeApi
 
 extension Pokemon {
-    public struct Genders: ApiGetable {
+    public struct Genders: ApiGetable, Identifiable {
         public static let resource: ResourceType = PokeApiClient.Resource.Pokemon.gender
         
         public struct SpeciesGender: PokeApiResource {

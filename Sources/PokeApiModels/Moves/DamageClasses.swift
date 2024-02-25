@@ -2,7 +2,7 @@ import Foundation
 import PokeApi
 
 extension Moves {
-    public struct DamageClasses: ApiGetable {
+    public struct DamageClasses: ApiGetable, Identifiable {
         public static let resource: ResourceType = PokeApiClient.Resource.Moves.damageClass
         
         public let id: Int

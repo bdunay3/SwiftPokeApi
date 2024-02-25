@@ -1,7 +1,7 @@
 import Foundation
 import PokeApi
 
-public struct Machine: ApiGetable {
+public struct Machine: ApiGetable, Identifiable {
     public static let resource: ResourceType = PokeApiClient.Resource.machine
     
     enum CodingKeys: String, CodingKey {

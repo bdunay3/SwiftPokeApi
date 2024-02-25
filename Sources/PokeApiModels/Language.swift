@@ -1,7 +1,7 @@
 import Foundation
 import PokeApi
 
-public struct Language: ApiGetable {
+public struct Language: ApiGetable, Identifiable {
     public static let resource: ResourceType = PokeApiClient.Resource.language
     
     public let id: Int

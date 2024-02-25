@@ -2,7 +2,7 @@ import Foundation
 import PokeApi
 
 extension Locations {
-    public struct Areas: ApiGetable {
+    public struct Areas: ApiGetable, Identifiable {
         public static let resource: ResourceType = PokeApiClient.Resource.Locations.locationArea
         
         public struct EncounterMethodRate: PokeApiResource {

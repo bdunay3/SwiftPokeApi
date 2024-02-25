@@ -2,7 +2,7 @@ import Foundation
 import PokeApi
 
 extension Locations {
-    public struct PalParkArea: ApiGetable {
+    public struct PalParkArea: ApiGetable, Identifiable {
         public static let resource: ResourceType = PokeApiClient.Resource.Locations.palParkArea
         
         public struct EncounterSpecies: PokeApiResource {

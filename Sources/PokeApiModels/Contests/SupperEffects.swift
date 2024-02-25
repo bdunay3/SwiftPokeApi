@@ -2,7 +2,7 @@ import Foundation
 import PokeApi
 
 extension Contests {
-    public struct SuperEffects: ApiGetable {
+    public struct SuperEffects: ApiGetable, Identifiable {
         public static let resource: ResourceType = PokeApiClient.Resource.Contests.superEffects
         
         enum CodingKeys: String, CodingKey {

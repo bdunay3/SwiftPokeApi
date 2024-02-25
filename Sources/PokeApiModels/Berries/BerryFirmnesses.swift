@@ -2,7 +2,7 @@ import Foundation
 import PokeApi
 
 extension Berries {
-    public struct Firmnesses: ApiGetable {
+    public struct Firmnesses: ApiGetable, Identifiable {
         public static var resource: ResourceType = PokeApiClient.Resource.Berries.firmnesses
         
         public let id: Int

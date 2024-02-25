@@ -2,7 +2,7 @@ import Foundation
 import PokeApi
 
 extension Locations {
-    public struct Regions: ApiGetable {
+    public struct Regions: ApiGetable, Identifiable {
         public static let resource: ResourceType = PokeApiClient.Resource.Locations.region
         
         enum CodingKeys: String, CodingKey {

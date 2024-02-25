@@ -2,7 +2,7 @@ import Foundation
 import PokeApi
 
 extension Evolution {
-    public struct Triggers: ApiGetable {
+    public struct Triggers: ApiGetable, Identifiable {
         public static let resource: ResourceType = PokeApiClient.Resource.Evolution.triggers
         
         enum CodingKeys: String, CodingKey {

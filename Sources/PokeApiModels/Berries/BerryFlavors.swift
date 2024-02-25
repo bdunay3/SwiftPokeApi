@@ -2,7 +2,7 @@ import Foundation
 import PokeApi
 
 extension Berries {
-    public struct Flavors: ApiGetable {
+    public struct Flavors: ApiGetable, Identifiable {
         public static var resource: ResourceType = PokeApiClient.Resource.Berries.flavors
         
         public struct Map: PokeApiResource {

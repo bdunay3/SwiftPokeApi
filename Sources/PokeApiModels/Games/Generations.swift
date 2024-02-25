@@ -2,7 +2,7 @@ import Foundation
 import PokeApi
 
 extension Games {
-    public struct Generations: ApiGetable {
+    public struct Generations: ApiGetable, Identifiable {
         public static var resource: ResourceType = PokeApiClient.Resource.Games.generations
         
         enum CodingKeys: String, CodingKey {

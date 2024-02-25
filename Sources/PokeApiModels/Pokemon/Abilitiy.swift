@@ -38,16 +38,6 @@ extension Pokemon {
             }
         }
         
-        public let id: Int
-        public let name: String
-        public let isMainSeries: Bool
-        public let generation: NamedAPIResource
-        public let names: [Name]
-        public let effectEntries: [VerboseEffect]
-        public let effectChanges: [EffectChange]
-        public let flavorTextEntries: [FlavorTextEntry]
-        public let pokemon: [Pokemon]
-
         enum CodingKeys: String, CodingKey {
             case id, name
             case isMainSeries = "is_main_series"
@@ -57,5 +47,15 @@ extension Pokemon {
             case flavorTextEntries = "flavor_text_entries"
             case pokemon
         }
+        
+        public let id: Int
+        public let name: String
+        public let isMainSeries: Bool
+        public let generation: NamedAPIResource
+        public let names: [Name]
+        public let effectEntries: [VerboseEffect]
+        public let effectChanges: [EffectChange]
+        public let flavorTextEntries: [FlavorTextEntry]
+        public let pokemon: [Pokemon]
     }
 }

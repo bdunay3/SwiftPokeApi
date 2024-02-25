@@ -2,7 +2,7 @@ import Foundation
 import PokeApi
 
 extension Moves {
-    public struct Targets: ApiGetable {
+    public struct Targets: ApiGetable, Identifiable {
         public static let resource: ResourceType = PokeApiClient.Resource.Moves.target
         
         public let id: Int

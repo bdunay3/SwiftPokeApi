@@ -2,7 +2,7 @@ import Foundation
 import PokeApi
 
 extension Pokemon {
-    public struct Natures: ApiGetable {
+    public struct Natures: ApiGetable, Identifiable {
         public static var resource: ResourceType = PokeApiClient.Resource.Pokemon.nature
         
         public struct StatChange: PokeApiResource {
