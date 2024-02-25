@@ -3,7 +3,7 @@ import PokeApi
 
 extension Evolution {
     public struct Triggers: ApiGetable, Identifiable {
-        public static let resource: ResourceType = PokeApiClient.Resource.Evolution.triggers
+        public static let resource: ResourceType = Resource.Evolution.triggers
         
         enum CodingKeys: String, CodingKey {
             case id, name, names

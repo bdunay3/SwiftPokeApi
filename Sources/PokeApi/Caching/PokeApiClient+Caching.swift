@@ -1,6 +1,6 @@
 import Foundation
 
-public extension PokeApiClient {
+public extension PokeApiClientProvider {
     static var defaultCachedClient: PokeApiClient {
         Self.init(session: defaultCachedSession)
     }
@@ -26,7 +26,7 @@ public extension PokeApiClient {
     }
 }
 
-internal extension PokeApiClient {
+internal extension PokeApiClientProvider {
     static var defaultCachedSession: URLSession {
         cachedSession(memoryCapacity: 16.asMegaBytes, diskCapacity: 128.asMegaBytes, directoryInCachesDir: "PokeApiDemo")
     }

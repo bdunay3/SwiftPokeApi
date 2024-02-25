@@ -3,7 +3,7 @@ import PokeApi
 
 extension Pokemon {
     public struct Ability: ApiGetable {
-        public static var resource: ResourceType = PokeApiClient.Resource.Pokemon.abilities
+        public static var resource: ResourceType = Resource.Pokemon.abilities
         
         public struct EffectChange: PokeApiResource {
             public let effectEntries: [Effect]

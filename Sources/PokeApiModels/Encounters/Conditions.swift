@@ -3,7 +3,7 @@ import PokeApi
 
 extension Encounters {
     public struct Conditions: ApiGetable, Identifiable {
-        public static let resource: ResourceType = PokeApiClient.Resource.Encounters.condition
+        public static let resource: ResourceType = Resource.Encounters.condition
         
         public let id: Int
         public let name: String

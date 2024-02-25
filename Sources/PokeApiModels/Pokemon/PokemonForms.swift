@@ -3,7 +3,7 @@ import PokeApi
 
 extension Pokemon {
     public struct Forms: ApiGetable, Identifiable {
-        public static var resource: ResourceType = PokeApiClient.Resource.Pokemon.forms
+        public static var resource: ResourceType = Resource.Pokemon.forms
         
         public struct Sprites: PokeApiResource {
             enum CodingKeys: String, CodingKey {

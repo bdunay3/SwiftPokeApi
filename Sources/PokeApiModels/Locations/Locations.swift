@@ -2,7 +2,7 @@ import Foundation
 import PokeApi
 
 public struct Locations: ApiGetable, Identifiable {
-    public static let resource: ResourceType = PokeApiClient.Resource.Locations.location
+    public static let resource: ResourceType = Resource.Locations.location
     
     enum CodingKeys: String, CodingKey {
         case id, name, region, names

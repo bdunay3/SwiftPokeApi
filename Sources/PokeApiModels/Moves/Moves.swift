@@ -2,7 +2,7 @@ import Foundation
 import PokeApi
 
 public struct Moves: ApiGetable, Identifiable {
-    public static let resource: ResourceType = PokeApiClient.Resource.Moves.moves
+    public static let resource: ResourceType = Resource.Moves.moves
     
     public struct ComboSets: PokeApiResource {
         public let normal: ComboDetail

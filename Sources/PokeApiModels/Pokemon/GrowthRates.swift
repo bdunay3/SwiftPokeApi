@@ -3,7 +3,7 @@ import PokeApi
 
 extension Pokemon {
     public struct GrowthRates: ApiGetable, Identifiable {
-        public static var resource: ResourceType = PokeApiClient.Resource.Pokemon.growthRate
+        public static var resource: ResourceType = Resource.Pokemon.growthRate
         
         public struct ExperienceLevel: PokeApiResource {
             public let level: Int

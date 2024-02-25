@@ -3,7 +3,7 @@ import PokeApi
 
 extension Moves {
     public struct LearnMethods: ApiGetable, Identifiable {
-        public static let resource: ResourceType = PokeApiClient.Resource.Moves.learnMethods
+        public static let resource: ResourceType = Resource.Moves.learnMethods
         
         enum CodingKeys: String, CodingKey {
             case id, name, descriptions, names

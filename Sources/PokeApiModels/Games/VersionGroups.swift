@@ -3,7 +3,7 @@ import PokeApi
 
 extension Games {
     public struct VersionGroups: ApiGetable, Identifiable {
-        public static var resource: ResourceType = PokeApiClient.Resource.Games.versionGroup
+        public static var resource: ResourceType = Resource.Games.versionGroup
         
         enum CodingKeys: String, CodingKey {
             case id, name, order, generation

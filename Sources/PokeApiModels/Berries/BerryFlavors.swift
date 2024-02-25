@@ -3,7 +3,7 @@ import PokeApi
 
 extension Berries {
     public struct Flavors: ApiGetable, Identifiable {
-        public static var resource: ResourceType = PokeApiClient.Resource.Berries.flavors
+        public static var resource: ResourceType = Resource.Berries.flavors
         
         public struct Map: PokeApiResource {
             public let potency: Int

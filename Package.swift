@@ -13,7 +13,6 @@ let package = Package(
         .visionOS(.v1)
     ],
     products: [
-        // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
             name: "PokeApi",
             targets: [
@@ -61,12 +60,14 @@ let package = Package(
             ]
         ),
         
-        // Additional Libraries
+        // Provides methods to fetch Poké data using Swift Concurrency
         .target(
             name: "PokeApiAsync",
             dependencies: [
                 "PokeApi"
             ]),
+        
+        // Provides methods to fetch Poké
         .target(
             name: "PokeApiCombine",
             dependencies: [

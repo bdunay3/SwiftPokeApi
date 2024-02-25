@@ -3,7 +3,7 @@ import PokeApi
 
 extension Contests {
     public struct SuperEffects: ApiGetable, Identifiable {
-        public static let resource: ResourceType = PokeApiClient.Resource.Contests.superEffects
+        public static let resource: ResourceType = Resource.Contests.superEffects
         
         enum CodingKeys: String, CodingKey {
             case id, appeal

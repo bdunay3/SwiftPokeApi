@@ -2,7 +2,7 @@ import Foundation
 import PokeApi
 
 public struct Language: ApiGetable, Identifiable {
-    public static let resource: ResourceType = PokeApiClient.Resource.language
+    public static let resource: ResourceType = Resource.language
     
     public let id: Int
     public let name: String

@@ -2,7 +2,7 @@ import SwiftUI
 
 public struct PokeApiClientKey: EnvironmentKey {
     public typealias Value = PokeApiClient
-    public static var defaultValue: PokeApiClient = PokeApiClient()
+    public static var defaultValue: PokeApiClient = PokeApiClientProvider()
 }
 
 public extension EnvironmentValues {

@@ -3,7 +3,7 @@ import PokeApi
 
 extension Games {
     public struct Pokedexes: ApiGetable, Identifiable {
-        public static var resource: ResourceType = PokeApiClient.Resource.Games.pokedexes
+        public static var resource: ResourceType = Resource.Games.pokedexes
         
         public struct PokemonEntry: PokeApiResource {
             enum CodingKeys: String, CodingKey {

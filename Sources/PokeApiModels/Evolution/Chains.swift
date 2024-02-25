@@ -3,7 +3,7 @@ import PokeApi
 
 public enum Evolution {
     public struct Chains: ApiGetable, Identifiable {
-        public static let resource: ResourceType = PokeApiClient.Resource.Evolution.chains
+        public static let resource: ResourceType = Resource.Evolution.chains
         
         public struct Link: PokeApiResource {
             enum CodingKeys: String, CodingKey {

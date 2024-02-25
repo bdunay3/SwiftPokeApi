@@ -3,7 +3,7 @@ import PokeApi
 
 extension Items {
     public struct Pocket: ApiGetable, Identifiable {
-        public static var resource: ResourceType = PokeApiClient.Resource.Items.pockets
+        public static var resource: ResourceType = Resource.Items.pockets
         
         public let id: Int
         public let name: String

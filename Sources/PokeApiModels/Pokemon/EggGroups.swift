@@ -3,7 +3,7 @@ import PokeApi
 
 extension Pokemon {
     public struct EggGroups: ApiGetable, Identifiable {
-        public static var resource: ResourceType = PokeApiClient.Resource.Pokemon.eggGroup
+        public static var resource: ResourceType = Resource.Pokemon.eggGroup
         
         enum CodingKeys: String, CodingKey {
             case id

@@ -3,7 +3,7 @@ import PokeApi
 
 extension Moves {
     public struct DamageClasses: ApiGetable, Identifiable {
-        public static let resource: ResourceType = PokeApiClient.Resource.Moves.damageClass
+        public static let resource: ResourceType = Resource.Moves.damageClass
         
         public let id: Int
         public let name: String

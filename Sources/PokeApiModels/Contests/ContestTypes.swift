@@ -3,7 +3,7 @@ import PokeApi
 
 extension Contests {
     public struct Types: ApiGetable, Identifiable {
-        public static let resource: ResourceType = PokeApiClient.Resource.Contests.types
+        public static let resource: ResourceType = Resource.Contests.types
         
         public struct ContestName: PokeApiResource {
             public let name: String

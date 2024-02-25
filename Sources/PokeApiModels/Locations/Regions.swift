@@ -3,7 +3,7 @@ import PokeApi
 
 extension Locations {
     public struct Regions: ApiGetable, Identifiable {
-        public static let resource: ResourceType = PokeApiClient.Resource.Locations.region
+        public static let resource: ResourceType = Resource.Locations.region
         
         enum CodingKeys: String, CodingKey {
             case id, locations, name, names
