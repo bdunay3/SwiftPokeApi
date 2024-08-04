@@ -3,7 +3,7 @@ import PokeApi
 
 extension Items {
     public struct FlingEffects: ApiGetable, Identifiable {
-        public static var resource: ResourceType = Resource.Items.flingEffects
+        public static let resource: ResourceType = Resource.Items.flingEffects
         
         enum CodingKeys: String, CodingKey {
             case id, name

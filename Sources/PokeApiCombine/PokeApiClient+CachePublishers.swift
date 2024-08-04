@@ -5,11 +5,10 @@ import PokeApi
 public extension PokeApiClient {
     func getCachedResourcePublisher<PokeApiData: Decodable>(_ type: PokeApiData.Type, request: URLRequest) -> AnyPublisher<PokeApiData, Error> {
         
-        Future<CachedURLResponse?, Error> { [cachesQueue, urlCache] promise in
-            cachesQueue.async {
-                promise(.success(urlCache?.cachedResponse(for: request)))
-            }
+        Future<CachedURLResponse?, Error> { [urlCache] promise in
+            promise(.success(urlCache?.cachedResponse(for: request)))
         }
+        .subscribe(on: cachesQueue)
         .tryMap {
             guard let cachedResponse = $0 else { throw PokeApiError.requestNotCached }
             return cachedResponse

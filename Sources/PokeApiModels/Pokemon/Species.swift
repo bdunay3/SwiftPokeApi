@@ -3,7 +3,7 @@ import PokeApi
 
 extension Pokemon {
     public struct Species: ApiGetable, Identifiable {
-        public static var resource: ResourceType = Resource.Pokemon.species
+        public static let resource: ResourceType = Resource.Pokemon.species
         
         public struct Genus: PokeApiResource {
             public let genus: String
