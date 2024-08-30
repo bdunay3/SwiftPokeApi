@@ -3,7 +3,7 @@ import PokeApi
 
 extension Pokemon {
     public struct Habitats: ApiGetable, Identifiable {
-        public static var resource: ResourceType = Resource.Pokemon.habitats
+        public static let resource: ResourceType = Resource.Pokemon.habitats
         
         enum CodingKeys: String, CodingKey {
             case id, name, names

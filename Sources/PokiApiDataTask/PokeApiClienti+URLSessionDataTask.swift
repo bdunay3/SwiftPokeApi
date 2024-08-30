@@ -2,13 +2,13 @@ import Foundation
 import PokeApi
 
 public extension PokeApiClient {
-    typealias PokeApiResult<PokeApiData: Decodable> = (Result<PokeApiData, Error>) -> Void
-    typealias PokeApiPageResult = (Result<NamedAPIResourceList, Error>) -> Void
+    typealias PokeApiResult<PokeApiData: Decodable> = @Sendable (Result<PokeApiData, Error>) -> Void
+    typealias PokeApiPageResult = @Sendable (Result<NamedAPIResourceList, Error>) -> Void
     
     @discardableResult
     func get<PokeApiData: Decodable>(_ type: PokeApiData.Type,
-                                         request: URLRequest,
-                                         result: @escaping PokeApiResult<PokeApiData>) -> URLSessionDataTask {
+                                     request: URLRequest,
+                                     result: @escaping PokeApiResult<PokeApiData>) -> URLSessionDataTask {
         let task = session.dataTask(with: request) { [weak self] data, response, error in
             guard let strongSelf = self else {
                 result(.failure(PokeApiError.nilWeakSelf))
@@ -49,8 +49,8 @@ public extension PokeApiClient {
     
     @discardableResult
     func get<PokeApiData: Decodable>(_ type: PokeApiData.Type,
-                                         at url: URL,
-                                         result: @escaping PokeApiResult<PokeApiData>) -> URLSessionDataTask {
+                                     at url: URL,
+                                     result: @escaping PokeApiResult<PokeApiData>) -> URLSessionDataTask {
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "GET"
         urlRequest.cachePolicy = .returnCacheDataElseLoad
@@ -81,14 +81,20 @@ public extension PokeApiClient {
     // MARK: - Get as Page of Resources
     
     @discardableResult
-    func getPage<PokeApiData: ApiGetable>(of type: PokeApiData.Type, from startIndex: Int, limit: Int, cachePolicy: URLRequest.CachePolicy? = nil, result: @escaping PokeApiPageResult) -> URLSessionDataTask {
+    func getPage<PokeApiData: ApiGetable>(of type: PokeApiData.Type,
+                                          from startIndex: Int,
+                                          limit: Int,
+                                          cachePolicy: URLRequest.CachePolicy? = nil,
+                                          result: @escaping PokeApiPageResult) -> URLSessionDataTask {
         
         get(
             NamedAPIResourceList.self,
-            request: urlGetPageRequest(of: type,
-                                       from: startIndex,
-                                       limit: limit,
-                                       cachePolicy: cachePolicy),
+            request: urlGetPageRequest(
+                of: type,
+                from: startIndex,
+                limit: limit,
+                cachePolicy: cachePolicy
+            ),
             result: result
         )
     }

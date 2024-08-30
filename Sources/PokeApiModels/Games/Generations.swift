@@ -3,7 +3,7 @@ import PokeApi
 
 extension Games {
     public struct Generations: ApiGetable, Identifiable {
-        public static var resource: ResourceType = Resource.Games.generations
+        public static let resource: ResourceType = Resource.Games.generations
         
         enum CodingKeys: String, CodingKey {
             case id, name, abilities, names

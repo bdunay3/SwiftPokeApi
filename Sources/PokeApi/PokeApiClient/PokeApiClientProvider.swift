@@ -7,7 +7,7 @@
 
 import Foundation
 
-public final class PokeApiClientProvider: PokeApiClient {
+public final actor PokeApiClientProvider: PokeApiClient {
     public let session: URLSession
     public let environment: PokeApiEnvironment
     
