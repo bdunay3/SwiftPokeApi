@@ -5,11 +5,11 @@ public extension PokeApiClientProvider {
         Self.init(session: defaultCachedSession)
     }
     
-    var urlCache: URLCache? {
+    nonisolated var urlCache: URLCache? {
         session.configuration.urlCache
     }
     
-    convenience init(memCacheSize: Int, diskCachSize: Int, directoryInCachesDir: String) {
+    init(memCacheSize: Int, diskCachSize: Int, directoryInCachesDir: String) {
         self.init(session:
             Self.cachedSession(memoryCapacity: memCacheSize,
                                diskCapacity: diskCachSize,
@@ -17,7 +17,7 @@ public extension PokeApiClientProvider {
         )
     }
     
-    convenience init(memCacheSize: Int, diskCachSize: Int, storedAt cacheDir: URL?) {
+    init(memCacheSize: Int, diskCachSize: Int, storedAt cacheDir: URL?) {
         self.init(session:
             Self.cachedSession(memoryCapacity: memCacheSize,
                                diskCapacity: diskCachSize,
