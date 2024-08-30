@@ -78,5 +78,6 @@ let package = Package(
             dependencies: [
                 "PokeApi"
             ]),
-    ]
+    ],
+    swiftLanguageModes: [.v6]
 )
